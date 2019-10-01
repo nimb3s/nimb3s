@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "projects": {
+    "nimb3s": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/nimb3s",
+      "sourceRoot": "apps/nimb3s/src",
+      "prefix": "spas",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/nimb3s",
+            "index": "apps/nimb3s/src/index.html",
+            "main": "apps/nimb3s/src/main.ts",
+            "polyfills": "apps/nimb3s/src/polyfills.ts",
+            "tsConfig": "apps/nimb3s/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/nimb3s/src/favicon.ico", "apps/nimb3s/src/assets"],
+            "styles": ["apps/nimb3s/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/nimb3s/src/environments/environment.ts",
+                  "with": "apps/nimb3s/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "nimb3s:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nimb3s:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nimb3s:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/nimb3s/tsconfig.app.json",
+              "apps/nimb3s/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/nimb3s/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/nimb3s/jest.config.js",
+            "tsConfig": "apps/nimb3s/tsconfig.spec.json",
+            "setupFile": "apps/nimb3s/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "nimb3s-e2e": {
+      "root": "apps/nimb3s-e2e",
+      "sourceRoot": "apps/nimb3s-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/nimb3s-e2e/cypress.json",
+            "tsConfig": "apps/nimb3s-e2e/tsconfig.e2e.json",
+            "devServerTarget": "nimb3s:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "nimb3s:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/nimb3s-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/nimb3s-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "nimb3s"
+}
