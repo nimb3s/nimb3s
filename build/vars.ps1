@@ -12,3 +12,11 @@ $psAfterScript = ".\build\after.ps1"
 
 #projects
 $spaDir = Join-Path -Path $buildFolder -ChildPath "src/spas" 
+
+Write-Output "******************************************"
+Write-Output "ENVIRONEMNT VARS:"
+Write-Output "******************************************"
+
+Write-Output "Running on build server: $($isRunningOnBuildServer)"
+Write-Output "Build folder: $($buildFolder.Path)"  
+Write-Output "PR Commit ID: $($prCommitId)"
