@@ -7,6 +7,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
+    "nimb3s:build:prod": "ng b --project=nimb3s --prod",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
