@@ -10,3 +10,4 @@ Write-Output "Running on build server: $($isRunningOnBuildServer)"
 Write-Output "Build folder: $($buildFolder)"  
 Write-Output "PR Commit ID: $($prCommitId)"
 Write-Output "SPA Dir: $($spaDir)"
+Write-Output "";

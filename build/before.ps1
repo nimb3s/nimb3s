@@ -7,3 +7,4 @@ Write-Output "******************************************"
 Write-Output "******************************************"
 Write-Output "BEFORE SCRIPTS: ENDED"
 Write-Output "******************************************"
+Write-Output "";

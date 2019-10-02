@@ -13,3 +13,4 @@ npm run nimb3s:build:prod
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: ENDED"
 Write-Output "******************************************"
+Write-Output "";
