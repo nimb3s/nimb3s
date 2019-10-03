@@ -36,7 +36,7 @@ Move-Item $artifactZip $artifactNupk -Force
 If ($isRunningOnBuildServer -eq $true) {
   Push-AppveyorArtifact $artifactNupk
 
-  nuget push $artifactNupk -ApiKey $env:NUGET_API_KEY -Source $env:NUGET_URL
+  #nuget push $artifactNupk -ApiKey $env:NUGET_API_KEY -Source $env:NUGET_URL
 }
 
 Write-Output "******************************************"
