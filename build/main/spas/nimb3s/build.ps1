@@ -36,9 +36,7 @@ Move-Item $artifactZip $artifactNupk -Force
 If ($isRunningOnBuildServer -eq $true) {
   Push-AppveyorArtifact $artifactNupk
 
-  (New-Object System.Net.WebClient).UploadFile( `
-  "https://ci.appveyor.com/nuget/nimb3s-x23ge0wfaecx/Nimb3s.Spa.$($buildNumber).nupk", `
-  $artifactNupk)
+  nuget push $artifactNupk -ApiKey $env:NUGET_API_KEY -Source $env:NUGET_URL
 }
 
 Write-Output "******************************************"
