@@ -4,6 +4,7 @@ Write-Output "******************************************"
 
 $projectDistDir = Join-Path -Path $distDir -ChildPath "apps/nimb3s/*"
 $nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec"
+$nuspecTemplae = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
 $lastCommitMessage = git log -1 --pretty=%B
 $artifactZip = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).zip"
 $artifactNupk = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).nupk"
@@ -19,9 +20,12 @@ Write-Output "project dist: $($projectDistDir)"
 npm run build:install 
 npm run nimb3s:build:prod
 
-Get-Content ($nuspecFile + ".template") | ForEach-Object { 
+Get-Content ($nuspecTemplae) | ForEach-Object { 
   $_ -replace '@version', $buildVersion `
-     -replace "@releaseNotes", $lastCommitMessage  
+     -replace "@id", "Nimb3s.Spa" `
+     -replace "@releaseNotes", $lastCommitMessage `
+     -replace "@description", "Nimb3s Single Page App" `
+     -replace "@tags", "angular web spa"
 } > $nuspecFile
 
 7z a -sae $artifactZip $projectDistDir
@@ -29,7 +33,7 @@ Get-Content ($nuspecFile + ".template") | ForEach-Object {
 
 Move-Item $artifactZip $artifactNupk -Force
 
-If (isRunningOnBuildServer -eq $true) {
+If ($isRunningOnBuildServer -eq $true) {
   Push-AppveyorArtifact $artifactNupk
 
   (New-Object System.Net.WebClient).UploadFile( `
