@@ -206,6 +206,7 @@ There are currently a few exceptions to the "use package name" rule:
   public path changes, package.json changes done to all packages, d.ts file/format changes, changes
   to bundles, etc.
 * **changelog**: used for updating the release notes in CHANGELOG.md
+* **readme**: used for updating the README.md
 * **docs-infra**: used for docs-app (angular.io) related changes within the /ndocs directory of the
   repo
 * none/empty string: useful for `style`, `test` and `refactor` changes that are done across all
