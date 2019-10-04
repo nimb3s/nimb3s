@@ -10,7 +10,6 @@ $nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec
 $nuspecTemplate = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
 $lastCommitMessage = git log -1 --pretty=%B
 $artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).nupk"
-$artifact = Join-path -Path $releaseDir -ChildPath "$($nimb3sNugetPackageId).nupkg"
 
 $nimb3sNugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
 $nimb3sNugetDescription = IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION  "Nimb3s Single Page App"
@@ -54,7 +53,7 @@ Get-Content ($nuspecTemplate) | ForEach-Object {
 nuget pac (Join-path -Path $releaseDir -ChildPath "$($nimb3sNugetPackageId).nuspec") -OutputDirectory $artifactsDir
 
 If ($isRunningOnBuildServer -eq $true) {
-  Push-AppveyorArtifact $artifact
+  Push-AppveyorArtifact $artifactNupkg
 
   nuget push $artifactNupkg -ApiKey $env:NUGET_API_KEY -Source $env:NUGET_URL
 }
