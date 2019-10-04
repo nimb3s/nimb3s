@@ -8,10 +8,16 @@
     <owners>Nimb3s</owners>
     <projectUrl>https://github.com/nimb3s/nimb3s</projectUrl>
     <license type="file">LICENSE</license>
-    <iconUrl>https://avatars2.githubusercontent.com/u/44105910</iconUrl>
+    <icon>icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>@releaseNotes</releaseNotes>
     <copyright>Copyright ©2019 Nimb3s</copyright>
     <tags>@tags</tags>
   </metadata>
+  <files>
+    @files
+    <file src="..\README.md" target="README.md" />
+    <file src="..\LICENSE" target="LICENSE" />
+    <file src="..\icon.png" target="icon.png" />
+  </files>
 </package>

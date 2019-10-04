@@ -1,45 +1,75 @@
 Write-Output "******************************************"
-Write-Output "SPA Nimb3s: STARTED"
+Write-Output "SPA Nimb3s: BUILD STARTED"
 Write-Output "******************************************"
 
+#vars
 $projectDistDir = Join-Path -Path $distDir -ChildPath "apps/nimb3s/*"
-$nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec"
-$nuspecTemplae = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
-$lastCommitMessage = git log -1 --pretty=%B
-$artifactZip = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).zip"
-$artifactNupk = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).nupk"
 
-Set-Location -Path $spaDir
+#release
+$nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec"
+$nuspecTemplate = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
+$lastCommitMessage = git log -1 --pretty=%B
+$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).nupk"
+$artifact = Join-path -Path $releaseDir -ChildPath "$($nimb3sNugetPackageId).nupkg"
+
+$nimb3sNugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
+$nimb3sNugetDescription = IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION  "Nimb3s Single Page App"
+$nimb3sNugetTags = IIf $env:NIMB3S_NUGET_TAGS $env:NIMB3S_NUGET_TAGS  "nimb3s angular web spa"
 
 Write-Output "changed working directory to $($spaDir)"
 Write-Output "running npm.v.$(npm -v)"
-Write-Output "artifact Zip: $($artifactZip)"
-Write-Output "nuspec file: $($nuspecFile)"
 Write-Output "project dist: $($projectDistDir)"
+
+Set-Location -Path $spaDir
 
 npm run build:install 
 npm run nimb3s:build:prod
 
-Get-Content ($nuspecTemplae) | ForEach-Object { 
-  $_ -replace '@version', $buildVersion `
-     -replace "@id", "Nimb3s.Spa" `
+Write-Output "******************************************"
+Write-Output "SPA Nimb3s: BUILD ENDED"
+Write-Output "******************************************"
+Write-Output "";
+
+Write-Output "******************************************"
+Write-Output "SPA Nimb3s: RELEASE STARTED"
+Write-Output "******************************************"
+Write-Output "";
+Write-Output "nusepc template: $($nuspecTemplate)"
+Write-Output "nuspec file: $($lastCommitMessage)"
+
+Set-Location -Path $buildFolder
+
+Get-Content ($nuspecTemplate) | ForEach-Object { 
+  $_ -replace '@version', $buildNumber `
+     -replace "@id", "$($nimb3sNugetPackageId)" `
      -replace "@releaseNotes", $lastCommitMessage `
-     -replace "@description", "Nimb3s Single Page App" `
-     -replace "@tags", "angular web spa"
+     -replace "@description", "$($nimb3sNugetDescription)" `
+     -replace "@tags", "$($nimb3sNugetTags)" `
+     -replace "@files", `
+     '
+      <file src="..\src\spas\dist\apps\nimb3s\**\*" target="dist" />
+     '
 } > $nuspecFile
 
-7z a -sae $artifactZip $projectDistDir
-7z a -sae $artifactZip $nuspecFile
-
-Move-Item $artifactZip $artifactNupk -Force
+nuget pac (Join-path -Path $releaseDir -ChildPath "$($nimb3sNugetPackageId).nuspec") -OutputDirectory $artifactsDir
 
 If ($isRunningOnBuildServer -eq $true) {
-  Push-AppveyorArtifact $artifactNupk
+  Push-AppveyorArtifact $artifact
 
-  #nuget push $artifactNupk -ApiKey $env:NUGET_API_KEY -Source $env:NUGET_URL
+  nuget push $artifactNupkg -ApiKey $env:NUGET_API_KEY -Source $env:NUGET_URL
 }
 
 Write-Output "******************************************"
-Write-Output "SPA Nimb3s: ENDED"
+Write-Output "SPA Nimb3s: RELEASE ENDED"
+Write-Output "******************************************"
+Write-Output "";
+
+Write-Output "******************************************"
+Write-Output "SPA Nimb3s: DEPLOY STARTED"
+Write-Output "******************************************"
+Write-Output "";
+
+Write-Output "******************************************"
+Write-Output "SPA Nimb3s: DEPLOY ENDED"
 Write-Output "******************************************"
 Write-Output "";
