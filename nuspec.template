@@ -8,7 +8,7 @@
     <owners>Nimb3s</owners>
     <projectUrl>https://github.com/nimb3s/nimb3s</projectUrl>
     <license type="file">LICENSE</license>
-    <icon>icon.png</icon>
+    <iconUrl>https://avatars2.githubusercontent.com/u/44105910</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>@releaseNotes</releaseNotes>
     <copyright>Copyright ©2019 Nimb3s</copyright>
