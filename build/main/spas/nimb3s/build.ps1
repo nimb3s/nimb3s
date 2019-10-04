@@ -54,7 +54,7 @@ nuget pac (Join-path -Path $releaseDir -ChildPath "$($nimb3sNugetPackageId).nusp
 
 If ($isRunningOnBuildServer -eq $true) {
   Push-AppveyorArtifact $artifactNupkg
-  Write-Output "trigger new build"
+  Write-Output "trigger new build "
   Write-Output "nuget push $($artifactNupkg) -ApiKey $($env:NUGET_API_KEY) -Source $($env:NUGET_URL)"
 
   nuget push $artifactNupkg -ApiKey $env:NUGET_API_KEY -Source $env:NUGET_URL
