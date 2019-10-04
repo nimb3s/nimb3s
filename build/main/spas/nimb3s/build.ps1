@@ -9,7 +9,7 @@ $projectDistDir = Join-Path -Path $distDir -ChildPath "apps/nimb3s/*"
 $nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec"
 $nuspecTemplate = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
 $lastCommitMessage = git log -1 --pretty=%B
-$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).nupk"
+$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/Nimb3s.Spa.$($buildNumber).nupkg"
 
 $nimb3sNugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
 $nimb3sNugetDescription = IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION  "Nimb3s Single Page App"
