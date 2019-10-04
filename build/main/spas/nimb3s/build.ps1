@@ -39,7 +39,7 @@ Write-Output "nuspec file: $($lastCommitMessage)"
 Set-Location -Path $buildFolder
 
 Get-Content ($nuspecTemplate) | ForEach-Object { 
-  $_ -replace '@version', $buildNumber `
+  $_ -replace '@version', $buildVersion `
      -replace "@id", "$($nimb3sNugetPackageId)" `
      -replace "@releaseNotes", $lastCommitMessage `
      -replace "@description", "$($nimb3sNugetDescription)" `
