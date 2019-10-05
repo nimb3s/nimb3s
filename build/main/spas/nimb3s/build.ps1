@@ -2,18 +2,7 @@ Write-Output "******************************************"
 Write-Output "SPA Nimb3s: BUILD STARTED"
 Write-Output "******************************************"
 
-#vars
 $projectDistDir = Join-Path -Path $distDir -ChildPath "apps/nimb3s/*"
-
-#release
-$nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec"
-$nuspecTemplate = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
-$lastCommitMessage = git log -1 --pretty=%B
-
-$nimb3sNugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
-$nimb3sNugetDescription = IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION  "Nimb3s Single Page App"
-$nimb3sNugetTags = IIf $env:NIMB3S_NUGET_TAGS $env:NIMB3S_NUGET_TAGS  "nimb3s angular web spa"
-$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/$($nimb3sNugetPackageId).$($buildVersion).nupkg"
 
 Write-Output "changed working directory to $($spaDir)"
 Write-Output "running npm.v.$(npm -v)"
@@ -33,6 +22,15 @@ Write-Output "******************************************"
 Write-Output "SPA Nimb3s: RELEASE STARTED"
 Write-Output "******************************************"
 Write-Output "";
+
+$nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec"
+$nuspecTemplate = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
+$lastCommitMessage = git log -1 --pretty=%B
+$nimb3sNugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
+$nimb3sNugetDescription = IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION  "Nimb3s Single Page App"
+$nimb3sNugetTags = IIf $env:NIMB3S_NUGET_TAGS $env:NIMB3S_NUGET_TAGS  "nimb3s angular web spa"
+$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/$($nimb3sNugetPackageId).$($buildVersion).nupkg"
+
 Write-Output "nusepc template: $($nuspecTemplate)"
 Write-Output "nuspec file: $($lastCommitMessage)"
 
@@ -64,12 +62,19 @@ If ($isRunningOnBuildServer -eq $true) {
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: RELEASE ENDED"
 Write-Output "******************************************"
-Write-Output "";
+Write-Output ""; 
 
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: DEPLOY STARTED"
 Write-Output "******************************************"
 Write-Output "";
+
+$firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token using: firebase login:ci"
+
+Set-Location -Path $spaDir
+
+npm run build:firebase
+firebase deploy --only hosting --message "$($nimb3sNugetPackageId).$($buildVersion)" --token $firebaseToken
 
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: DEPLOY ENDED"

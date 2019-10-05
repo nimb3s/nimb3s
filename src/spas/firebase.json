@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "nimb3s",
+      "public": "dist/apps/nimb3s",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

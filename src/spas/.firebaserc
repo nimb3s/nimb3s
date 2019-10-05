@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "jw-admin"
+  },
+  "targets": {
+    "jw-admin": {
+      "hosting": {
+        "nimb3s": [
+          "nimb3s"
+        ]
+      }
+    }
+  }
+}
