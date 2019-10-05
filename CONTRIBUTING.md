@@ -1,5 +1,3 @@
-Very quickly. Props to the folks at [angular in helping us write this contrib doc](https://github.com/angular/angular/blob/master/CONTRIBUTING.md). We think its awesome :heart_eyes:. At the moment we don't have enough time to come up with our own. We just want to lay down some of the groundwork to get us rolling. :wink:.
-
 # Contributing to Nimb3s
 
 We would love for you to contribute to Nimb3s and help make it even better than it is
