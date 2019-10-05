@@ -8,6 +8,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:install": "npm install --loglevel=error --no-update-notifier",
+    "build:firebase": "npm install -g firebase-tools",
     "nimb3s:build:prod": "ng b --project=nimb3s --prod",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",

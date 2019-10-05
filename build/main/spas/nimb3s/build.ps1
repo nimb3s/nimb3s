@@ -23,7 +23,6 @@ Write-Output "SPA Nimb3s: RELEASE STARTED"
 Write-Output "******************************************"
 Write-Output "";
 
-
 $nuspecFile = Join-Path -Path $buildFolder -ChildPath "release/Nimb3s.Spa.nuspec"
 $nuspecTemplate = Join-Path -Path $buildFolder -ChildPath "nuspec.template"
 $lastCommitMessage = git log -1 --pretty=%B
@@ -74,7 +73,7 @@ $firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token u
 
 Set-Location -Path $spaDir
 
-npm install -g firebase-tools
+npm run build:firebase
 firebase deploy --only hosting --message "$($nimb3sNugetPackageId).$($buildVersion)" --token $firebaseToken
 
 Write-Output "******************************************"
