@@ -230,3 +230,6 @@ reference GitHub issues that this commit **Closes**.
 
 <hr>
 
+## Good learning links
+
+- [at what age did I start learning to code]( https://www.freecodecamp.org/news/stories-from-300-developers-who-got-their-first-tech-job-in-their-30s-40s-and-50s-64306eb6bb27/)
