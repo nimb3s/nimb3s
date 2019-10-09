@@ -74,7 +74,7 @@ $firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token u
 Set-Location -Path $spaDir
 
 npm run build:firebase
-firebase deploy --only hosting --message "$($nimb3sNugetPackageId).$($buildVersion)" --token $firebaseToken
+firebase deploy --only hosting --message "$($nimb3sNugetPackageId).$($buildVersion).$($prCommitId)" --token $firebaseToken
 
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: DEPLOY ENDED"
