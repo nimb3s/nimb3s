@@ -29,7 +29,7 @@ $lastCommitMessage = git log -1 --pretty=%B
 $nimb3sNugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
 $nimb3sNugetDescription = IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION  "Nimb3s Single Page App"
 $nimb3sNugetTags = IIf $env:NIMB3S_NUGET_TAGS $env:NIMB3S_NUGET_TAGS  "nimb3s angular web spa"
-$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/$($nimb3sNugetPackageId).$($gitVersion.NuGetVersionV2).$($gitVersion.CommitsSinceVersionSourcePadded).nupkg"
+$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/$($nimb3sNugetPackageId).$($gitVersion.NuGetVersionV2).$($gitVersion.CommitsSinceVersionSource).nupkg"
 
 Write-Output "nusepc template: $($nuspecTemplate)"
 Write-Output "nuspec file: $($lastCommitMessage)"
@@ -37,7 +37,7 @@ Write-Output "nuspec file: $($lastCommitMessage)"
 Set-Location -Path $buildFolder
 
 Get-Content ($nuspecTemplate) | ForEach-Object { 
-  $_ -replace '@version', -join($gitVersion.NuGetVersionV2, "-", $gitVersion.CommitsSinceVersionSourcePadded) `
+  $_ -replace '@version', -join($gitVersion.NuGetVersionV2, "-", $gitVersion.CommitsSinceVersionSource) `
      -replace "@id", "$($nimb3sNugetPackageId)" `
      -replace "@releaseNotes", $lastCommitMessage `
      -replace "@description", "$($nimb3sNugetDescription)" `

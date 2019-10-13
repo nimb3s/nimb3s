@@ -11,7 +11,6 @@ $localhostDeployTarget = 'LOCALHOST'
 $platform = IIf $env:PLATFORM  $env:PLATFORM  $localhostDeployTarget
 $isRunningOnBuildServer = IIf $env:APPVEYOR $true $false
 $buildFolder = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location)
-$currentBranch = (git rev-parse --abbrev-ref HEAD)
 
 #pull request
 $isPullRequest = $false
@@ -53,7 +52,6 @@ if ($isRunningOnBuildServer -eq $true) {
 Write-Output ""
 Write-Output "Platform: $($platform)"
 Write-Output "Running on build server: $($isRunningOnBuildServer)"
-Write-Output "Current branch: $($currentBranch)"
 Write-Output "Deploy target: $($envDeployTarget)"
 Write-Output ""
 
