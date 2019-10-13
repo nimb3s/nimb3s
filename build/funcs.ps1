@@ -1,4 +1,4 @@
 Function IIf($If, $IfTrue, $IfFalse) {
-    If ($If) {If ($IfTrue -is "ScriptBlock") {&$IfTrue} Else {$IfTrue}}
-    Else {If ($IfFalse -is "ScriptBlock") {&$IfFalse} Else {$IfFalse}}
+    if ($If) {if ($IfTrue -is 'ScriptBlock') {&$IfTrue} else {$IfTrue}}
+    else {if ($IfFalse -is 'ScriptBlock') {&$IfFalse} else {$IfFalse}}
 }

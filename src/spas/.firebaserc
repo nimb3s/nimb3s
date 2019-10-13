@@ -1,12 +1,28 @@
 {
   "projects": {
-    "default": "jw-admin"
+    "default": "dev-nimb3s",
+    "stage": "stage-nimb3s",
+    "prod": "prod-nimb3s"
   },
   "targets": {
-    "jw-admin": {
+    "dev-nimb3s": {
       "hosting": {
         "nimb3s": [
-          "nimb3s"
+          "dev-nimb3s"
+        ]
+      }
+    },
+    "stage-nimb3s": {
+      "hosting": {
+        "nimb3s": [
+          "stage-nimb3s"
+        ]
+      }
+    },
+    "prod-nimb3s": {
+      "hosting": {
+        "nimb3s": [
+          "prod-nimb3s"
         ]
       }
     }
