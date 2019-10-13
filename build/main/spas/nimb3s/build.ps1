@@ -29,7 +29,7 @@ $lastCommitMessage = git log -1 --pretty=%B
 $nimb3sNugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
 $nimb3sNugetDescription = IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION  "Nimb3s Single Page App"
 $nimb3sNugetTags = IIf $env:NIMB3S_NUGET_TAGS $env:NIMB3S_NUGET_TAGS  "nimb3s angular web spa"
-$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/$($nimb3sNugetPackageId).$($gitVersion.NuGetVersionV2).$($gitVersion.CommitsSinceVersionSource).nupkg"
+$artifactNupkg = Join-Path -Path $buildFolder -ChildPath "artifacts/$($nimb3sNugetPackageId).$($gitVersion.NuGetVersionV2)-$($gitVersion.CommitsSinceVersionSource).nupkg"
 
 Write-Output "nusepc template: $($nuspecTemplate)"
 Write-Output "nuspec file: $($lastCommitMessage)"
