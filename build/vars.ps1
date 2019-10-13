@@ -41,11 +41,11 @@ $distDir = Join-Path -Path $spaDir -ChildPath 'dist'
 $envDeployTarget = $localhostDeployTarget
 
 if ($isRunningOnBuildServer -eq $true) {
-    if ($prBranchDestination -eq 'master' -or $currentBranch -eq 'master') {
+    if ($prBranchDestination -eq 'master') {
         $envDeployTarget = $prodDeployTarget
-    } elseif ($prBranchDestination -eq 'develop' -or $currentBranch -match '^feature/') {
+    } elseif ($prBranchDestination -eq 'develop') {
         $envDeployTarget = $developDeployTarget
-    } elseif ($prBranchDestination -match '^release/'-or $currentBranch -match '^hotfix/') {
+    } elseif ($prBranchDestination -match '^release/'-or $prBranchDestination -match '^hotfix/') {
         $envDeployTarget = $stagingDeployTarget
     }
 }
