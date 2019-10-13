@@ -10,8 +10,8 @@ Write-Output "project dist: $($projectDistDir)"
 
 Set-Location -Path $spaDir
 
-npm run build:install 
-npm run nimb3s:build:prod
+# npm run build:install 
+# npm run nimb3s:build:prod
 
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: BUILD ENDED"
@@ -37,7 +37,7 @@ Write-Output "nuspec file: $($lastCommitMessage)"
 Set-Location -Path $buildFolder
 
 Get-Content ($nuspecTemplate) | ForEach-Object { 
-  $_ -replace '@version', $gitVersion.NuGetVersionV2 `
+  $_ -replace '@version', -join($gitVersion.NuGetVersionV2, "-", $gitVersion.CommitsSinceVersionSourcePadded) `
      -replace "@id", "$($nimb3sNugetPackageId)" `
      -replace "@releaseNotes", $lastCommitMessage `
      -replace "@description", "$($nimb3sNugetDescription)" `
@@ -77,7 +77,7 @@ $firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token u
 
 Set-Location -Path $spaDir
 
-npm run build:firebase
+# npm run build:firebase
 
 if ($envDeployTarget -eq $developDeployTarget) {
   firebase use default
