@@ -10,8 +10,8 @@ Write-Output "project dist: $($projectDistDir)"
 
 Set-Location -Path $spaDir
 
-# npm run build:install 
-# npm run nimb3s:build:prod
+npm run build:install 
+npm run nimb3s:build:prod
 
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: BUILD ENDED"
@@ -77,7 +77,7 @@ $firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token u
 
 Set-Location -Path $spaDir
 
-# npm run build:firebase
+npm run build:firebase
 
 if ($envDeployTarget -eq $developDeployTarget) {
   firebase use default
