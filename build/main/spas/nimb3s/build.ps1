@@ -64,6 +64,7 @@ Write-Output "******************************************"
 Write-Output ""; 
 
 if ($envDeployTarget -eq $localhostDeployTarget) {
+  Write-Output "DEPLOY SKIPPED!!!";
   return;
 }
 
@@ -78,7 +79,15 @@ Set-Location -Path $spaDir
 
 npm run build:firebase
 
-firebase deploy --only hosting --message "$($nimb3sNugetPackageId).$($gitVersion.InformationalVersion)" --token $firebaseToken
+if ($envDeployTarget -eq $developDeployTarget) {
+  firebase use default
+} elseif ($envDeployTarget -eq $stagingDeployTarget) {
+  firebase use stage
+} elseif ($envDeployTarget -eq $prodDeployTarget) {
+  firebase use prod
+}
+
+firebase deploy --only hosting:nimb3s --message "$($nimb3sNugetPackageId).$($gitVersion.InformationalVersion)" --token $firebaseToken
 
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: DEPLOY ENDED"
