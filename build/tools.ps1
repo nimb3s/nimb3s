@@ -14,3 +14,7 @@ Write-Output "******************************************"
 Write-Output "INSTALLING TOOLS: FINISHED"
 Write-Output "******************************************"
 Write-Output ""
+
+if ($isRunningOnBuildServer) {
+    Add-AppveyorMessage -Message "Tools installed" -Category Information
+}
