@@ -2,7 +2,12 @@ Write-Output "******************************************"
 Write-Output "POST SCRIPTS: STARTED"
 Write-Output "******************************************"
 
-#scripts
+#enable rdp
+$blockRdp = $isCiRdpEnabled;
+
+if($blockRdp) {
+    iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+}
 
 Write-Output "******************************************"
 Write-Output "POST SCRIPTS: ENDED"
