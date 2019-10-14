@@ -73,7 +73,7 @@ if ($envDeployTarget -eq $localhostDeployTarget) {
   Write-Output "DEPLOY SKIPPED!!!";
   Write-Output "";
 
-  if ($isRunningOnBuildServer) {
+  if ($isRunningOnBuildServer -eq $true) {
     Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($nimb3sSpaArtifactName)" -Category Information
   }
   return;
@@ -100,6 +100,6 @@ Write-Output "SPA Nimb3s: DEPLOY ENDED"
 Write-Output "******************************************"
 Write-Output "";
 
-if ($isRunningOnBuildServer) {
+if ($isRunningOnBuildServer -eq $true) {
   Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($nimb3sSpaArtifactName)" -Category Information
 }

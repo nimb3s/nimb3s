@@ -7,7 +7,8 @@ Write-Output "";
 #########################
 
 #choco
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 #nuget command line
 choco install nuget.commandline
@@ -31,6 +32,6 @@ Write-Output "PRE SCRIPTS: ENDED"
 Write-Output "******************************************"
 Write-Output "";
 
-if ($isRunningOnBuildServer) {
+if ($isRunningOnBuildServer -eq $true) {
     Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Pre-Scripts ended" -Category Information
 }
