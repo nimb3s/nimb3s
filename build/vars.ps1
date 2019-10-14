@@ -41,6 +41,10 @@ $distDir = Join-Path -Path $spaDir -ChildPath 'dist'
 $envDeployTarget = $localhostDeployTarget
 Write-Output "envDeployTarget $($envDeployTarget)"
 Write-Output "isRunningOnBuildServer $($isRunningOnBuildServer)"
+Write-Output "$isRunningOnBuildServer -eq $true"
+
+$isRunningOnBuildServer -eq $true
+
 if ($isRunningOnBuildServer -eq $true) {
     if ($isPullReques -eq $false -and $prBranchDestination -eq 'master') {
         Write-Output "isPullReques -prBranchDestination $($isPullReques) - $($prBranchDestination)"
