@@ -1,5 +1,5 @@
 Write-Output "******************************************"
-Write-Output "BEFORE SCRIPTS: STARTED"
+Write-Output "PRE SCRIPTS: STARTED"
 Write-Output "******************************************"
 Write-Output "";
 
@@ -27,6 +27,10 @@ if ($isRunningOnBuildServer -eq $true) {
 }
 
 Write-Output "******************************************"
-Write-Output "BEFORE SCRIPTS: ENDED"
+Write-Output "PRE SCRIPTS: ENDED"
 Write-Output "******************************************"
 Write-Output "";
+
+if ($isRunningOnBuildServer) {
+    Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Pre-Scripts ended" -Category Information
+}
