@@ -10,5 +10,5 @@ Write-Output "******************************************"
 Write-Output "";
 
 if ($isRunningOnBuildServer) {
-    Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff  K"): Post-Scripts ended" -Category Information
+    Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Post-Scripts ended" -Category Information
 }
