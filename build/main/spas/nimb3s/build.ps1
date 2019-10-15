@@ -1,22 +1,5 @@
-Write-Output "******************************************"
-Write-Output "SPA Nimb3s: BUILD STARTED"
-Write-Output "******************************************"
+Build-Site "Nimb3s" $spaDir "apps/nimb3s/*" $distDir "build:install" "nimb3s:build:prod"
 
-$projectDistDir = Join-Path -Path $distDir -ChildPath "apps/nimb3s/*"
-
-Write-Output "changed working directory to $($spaDir)"
-Write-Output "running npm.v.$(npm -v)"
-Write-Output "project dist: $($projectDistDir)"
-
-Set-Location -Path $spaDir
-
-npm run build:install 
-npm run nimb3s:build:prod
-
-Write-Output "******************************************"
-Write-Output "SPA Nimb3s: BUILD ENDED"
-Write-Output "******************************************"
-Write-Output "";
 
 Write-Output "******************************************"
 Write-Output "SPA Nimb3s: RELEASE STARTED"
