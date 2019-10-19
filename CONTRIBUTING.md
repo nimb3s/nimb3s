@@ -223,7 +223,7 @@ There are currently a few exceptions to the "use package name" rule:
 
 -   **docs-infra**: used for docs-app (angular.io) related changes within the /ndocs directory of the
     repo
-    
+
 -   none/empty string: useful for `style`, `test` and `refactor` changes that are done across all
     packages (e.g. `style: add missing semicolons`) and for docs changes that are not related to a
     specific package (e.g. `docs: fix typo in tutorial`).
