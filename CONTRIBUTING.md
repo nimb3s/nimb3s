@@ -104,6 +104,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 -   If we suggest changes then:
 
     -   Make the required updates.
+
     -   Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
         ```shell
@@ -159,13 +160,13 @@ we use the git commit messages to **generate the Nimb3s change log**.
 
 Each commit message consists of a **header**, a **body** and a **footer**.  The header has a special
 format that includes a **type**, a **scope** and a **subject**:
-
+```html
     <type>(<scope>): <subject>
     <BLANK LINE>
     <body>
     <BLANK LINE>
     <footer>
-
+```
 The **header** is mandatory and the **scope** of the header is optional.
 
 Any line of the commit message cannot be longer 100 characters! This allows the message to be easier
@@ -174,13 +175,13 @@ to read on GitHub as well as in various git tools.
 The footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/) if any.
 
 Samples: (even more [samples](https://github.com/angular/angular/commits/master))
-
+```
     docs(changelog): update changelog to beta.5
 
     fix(release): need to depend on latest rxjs and zone.js
 
     The version in our package.json gets copied to the one we publish, and users need the latest of these.
-
+```
 ### Revert
 
 If the commit reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
@@ -215,10 +216,14 @@ There are currently a few exceptions to the "use package name" rule:
 -   **packaging**: used for changes that change the npm package layout in all of our packages, e.g.
     public path changes, package.json changes done to all packages, d.ts file/format changes, changes
     to bundles, etc.
+
 -   **changelog**: used for updating the release notes in CHANGELOG.md
+
 -   **readme**: used for updating the README.md
+
 -   **docs-infra**: used for docs-app (angular.io) related changes within the /ndocs directory of the
     repo
+    
 -   none/empty string: useful for `style`, `test` and `refactor` changes that are done across all
     packages (e.g. `style: add missing semicolons`) and for docs changes that are not related to a
     specific package (e.g. `docs: fix typo in tutorial`).
