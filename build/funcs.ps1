@@ -86,7 +86,7 @@ function Publish-ReleasePackage(
 }
 
 function Publish-FirebaseSite(
-    $FriendlyAppName,
+    $AppName,
     $BuildDirectory,
     $DeployTarget,
     $LocalDeployTarget,
@@ -94,10 +94,13 @@ function Publish-FirebaseSite(
     $ArtifactName,
     $FirebaseToken,
     $NugetPackgeId,
-    $GitVersion
+    $GitVersion,
+    $TargetDefault,
+    $TargetStage,
+    $TargetProd
 ) {
     Write-Output "******************************************"
-    Write-Output "$($FriendlyAppName): DEPLOY STARTED"
+    Write-Output "$($AppName): DEPLOY STARTED"
     Write-Output "******************************************"
     Write-Output "";
     
@@ -117,17 +120,20 @@ function Publish-FirebaseSite(
     npm run build:firebase
     
     if ($DeployTarget -eq $developDeployTarget) {
-      firebase use default
+      firebase use $TargetDefault
+      Write-Output "firebase use $($TargetDefault)"
     } elseif ($DeployTarget -eq $stagingDeployTarget) {
-      firebase use stage
+      firebase use $TargetStage
+      Write-Output "firebase use $($TargetStage)"
     } elseif ($DeployTarget -eq $prodDeployTarget) {
-      firebase use prod
+      firebase use $TargetProd
+      Write-Output "firebase use $($TargetProd)"
     }
     
-    firebase deploy --only hosting:nimb3s --message "$($NugetPackageId).$($GitVersion.InformationalVersion)" --token $FirebaseToken
+    firebase deploy --only hosting:$($AppName.ToLower()) --message "$($NugetPackageId).$($GitVersion.InformationalVersion)" --token $FirebaseToken
     
     Write-Output "******************************************"
-    Write-Output "$($FriendlyAppName): DEPLOY ENDED"
+    Write-Output "$($AppName): DEPLOY ENDED"
     Write-Output "******************************************"
     Write-Output "";
     
