@@ -11,7 +11,7 @@ $localhostDeployTarget = 'LOCALHOST'
 #context
 $platform = IIf $env:PLATFORM  $env:PLATFORM  $localhostDeployTarget
 $isRunningOnBuildServer = IIf $env:APPVEYOR $true $false
-$buildFolder = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location)
+$buildDir = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location).Path
 
 #pull request
 $isPullRequest = $false
@@ -30,11 +30,11 @@ $buildTagName = IIf $env:APPVEYOR_REPO_TAG_NAME  $env:APPVEYOR_REPO_TAG_NAME  $u
 $gitVersion = gitversion | ConvertFrom-Json
 
 #release
-$releaseDir = Join-Path -Path $buildFolder -ChildPath 'release'
-$artifactsDir = Join-Path -Path $buildFolder -ChildPath 'artifacts'
+$releaseDir = Join-Path -Path $buildDir -ChildPath 'release'
+$artifactsDir = Join-Path -Path $buildDir -ChildPath 'artifacts'
 
 #projects
-$spaDir = Join-Path -Path $buildFolder -ChildPath 'src/spas' 
+$spaDir = Join-Path -Path $buildDir -ChildPath 'src/spas' 
 $distDir = Join-Path -Path $spaDir -ChildPath 'dist'
 
 #environment
@@ -58,7 +58,7 @@ Write-Output ""
 
 Write-Output "DIRECTORIES:"
 Write-Output ""
-Write-Output "Build folder: $($buildFolder)"
+Write-Output "Build folder: $($buildDir)"
 Write-Output "Release dir: $($releaseDir)"
 Write-Output "Artifacts dir: $($artifactsDir)"
 Write-Output "Dist dir: $($distDir)"
