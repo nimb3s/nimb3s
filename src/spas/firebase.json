@@ -14,6 +14,21 @@
           "destination": "/index.html"
         }
       ]
+    },
+    {
+      "target": "jwadmin",
+      "public": "dist/apps/jwadmin",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }
