@@ -18,8 +18,8 @@ choco install gitversion.portable --pre -y
 
 #directories
 #########################
-New-Item -ItemType Directory -Force -Path (Join-Path $buildFolder "artifacts")
-New-Item -ItemType Directory -Force -Path (Join-Path $buildFolder "release")
+New-Item -ItemType Directory -Force -Path (Join-Path $buildDir "artifacts")
+New-Item -ItemType Directory -Force -Path (Join-Path $buildDir "release")
 
 #build
 #########################
