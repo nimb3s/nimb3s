@@ -1,6 +1,0 @@
-$friendlyAppName = "SPA Nimb3s"
-$nugetPackageId = IIf $env:NIMB3S_NUGET_PACKAGE_ID $env:NIMB3S_NUGET_PACKAGE_ID "Nimb3s.Spa"
-
-Build-AngularApp $friendlyAppName $spaDir "apps/nimb3s/*" $distDir "build:install" "nimb3s:build:prod"
-$artifactName = Publish-ReleasePackage -FriendlyAppName $friendlyAppName -BuildDirectory $buildDir -NugetPackageId $nugetPackageId -NugetPackageDescription (IIf $env:NIMB3S_NUGET_DESCRIPTION $env:NIMB3S_NUGET_DESCRIPTION "missing description") -NugetTags (IIf $env:NIMB3S_NUGET_TAGS $env:NIMB3S_NUGET_TAGS "missing tags") -NugetFileTargets @( ,('<file src="..\src\spas\dist\apps\nimb3s\**\*" target="dist" />')) -ArtifactsDirectory $artifactsDir -ReleaseDirectory $releaseDir -IsRunningOnBuildServer $isRunningOnBuildServer -NugetApiKey (IIf $env:NUGET_API_KEY $env:NUGET_API_KEY  "nuget api key missing") -NugetUrl (IIf $env:NUGET_URL $env:NUGET_URL "nuget url missing")
-Publish-FirebaseSite -FriendlyAppName $friendlyAppName -BuildDirectory $buildDir -DeployTarget $envDeployTarget -LocalDeployTarget $localhostDeployTarget -ArtifactName $artifactName -FirebaseToken (IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token using: firebase login:ci") -NugetPackageId $nugetPackgeId -GitVersion $gitVersion
