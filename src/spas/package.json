@@ -13,6 +13,7 @@
     "build:jwadmin": "ng b --project=jwadmin --prod",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
+    "lint-md": "remark .",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
@@ -30,6 +31,11 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -65,6 +71,9 @@
     "jest": "24.1.0",
     "jest-preset-angular": "^7.1.1",
     "prettier": "1.18.2",
+    "remark-cli": "^7.0.0",
+    "remark-lint": "^6.0.5",
+    "remark-preset-lint-recommended": "^3.0.3",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
