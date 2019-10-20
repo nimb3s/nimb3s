@@ -103,6 +103,19 @@ function Publish-FirebaseSite(
     Write-Output "$($AppName): DEPLOY STARTED"
     Write-Output "******************************************"
     Write-Output "";
+
+    Write-Output "AppName: $($AppName)"
+    Write-Output "BuildDirectory: $($BuildDirectory)"
+    Write-Output "DeployTarget: $($DeployTarget)"
+    Write-Output "LocalDeployTarget: $($LocalDeployTarget)"
+    Write-Output "IsRunningOnBuildServer: $($IsRunningOnBuildServer)"
+    Write-Output "ArtifactName: $($ArtifactName)"
+    Write-Output "FirebaseToken: $($FirebaseToken)"
+    Write-Output "NugetPackgeId: $($NugetPackgeId)"
+    Write-Output "GitVersion: $($GitVersion.InformationalVersion)"
+    Write-Output "TargetDefault: $($TargetDefault)"
+    Write-Output "TargetStage: $($TargetStage)"
+    Write-Output "TargetProd: $($TargetProd)"
     
     if ($DeployTarget -eq $LocalDeployTarget) {
       Write-Output "DEPLOY SKIPPED!!!";
@@ -120,6 +133,7 @@ function Publish-FirebaseSite(
     npm run build:firebase
     
     Write-Output "deploy targets: dev - $($developDeployTarget); stage - $($stagingDeployTarget); prod - $($prodDeployTarget)"
+    Write-Output "firebase use: dev - $($TargetDefault); stage - $($TargetStage); prod - $($TargetProd)"
     
     if ($DeployTarget -eq $developDeployTarget) {
       firebase use $TargetDefault --token $FirebaseToken
@@ -132,6 +146,7 @@ function Publish-FirebaseSite(
       Write-Output "firebase use $($TargetProd)"
     }
     
+    Write-Output "firebase deploy --only hosting:$($AppName.ToLower()) --message $($NugetPackageId).$($GitVersion.InformationalVersion) --token $($FirebaseToken)"
     firebase deploy --only hosting:$($AppName.ToLower()) --message "$($NugetPackageId).$($GitVersion.InformationalVersion)" --token $FirebaseToken
     
     Write-Output "******************************************"

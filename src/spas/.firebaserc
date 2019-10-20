@@ -4,8 +4,7 @@
     "stage": "stage-nimb3s",
     "prod": "prod-nimb3s",
     "default-jwadmin": "dev-jwadmin",
-    "stage-jwadmin": "stage-jwadmin",
-    "prod-jwadmin": "prod-jwadmin"
+    "stage-jwadmin": "stage-jwadmin"
   },
   "targets": {
     "dev-nimb3s": {
@@ -40,13 +39,6 @@
       "hosting": {
         "jwadmin": [
           "stage-jwadmin"
-        ]
-      }
-    },
-    "prod-jwadmin": {
-      "hosting": {
-        "jwadmin": [
-          "prod-jwadmin"
         ]
       }
     }
