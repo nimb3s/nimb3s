@@ -20,7 +20,7 @@ $artifactName = Publish-ReleasePackage `
     -ArtifactsDirectory $artifactsDir `
     -ReleaseDirectory $releaseDir `
     -IsRunningOnBuildServer $isRunningOnBuildServer `
-    -NugetApiKey $nugetApiKey`
+    -NugetApiKey $nugetApiKey `
     -NugetUrl $nugetUrl
     
 Publish-FirebaseSite `
