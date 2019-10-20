@@ -84,4 +84,3 @@ Write-Output "Build started by pushed tag name: $($buildStartedByTag)"
 Write-Output "Git Version:"
 $gitVersion | Select-Object *
 Write-Output ""
-
