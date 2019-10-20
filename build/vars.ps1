@@ -1,5 +1,5 @@
 $undefined = 'UNDEFINED'
-$isCiServerRdpEnabled = $true
+$isCiServerRdpEnabled = $false
 
 #deploy
 $prodDeployTarget = 'PRODUCTION'
