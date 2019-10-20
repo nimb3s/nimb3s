@@ -120,13 +120,13 @@ function Publish-FirebaseSite(
     npm run build:firebase
     
     if ($DeployTarget -eq $developDeployTarget) {
-      firebase use $TargetDefault
+      firebase use $TargetDefault --token $FirebaseToken
       Write-Output "firebase use $($TargetDefault)"
     } elseif ($DeployTarget -eq $stagingDeployTarget) {
-      firebase use $TargetStage
+      firebase use $TargetStage --token $FirebaseToken
       Write-Output "firebase use $($TargetStage)"
     } elseif ($DeployTarget -eq $prodDeployTarget) {
-      firebase use $TargetProd
+      firebase use $TargetProd --token $FirebaseToken
       Write-Output "firebase use $($TargetProd)"
     }
     
