@@ -92,7 +92,6 @@ function Publish-FirebaseSite(
     $LocalDeployTarget,
     $IsRunningOnBuildServer,
     $ArtifactName,
-    $FirebaseToken,
     $NugetPackgeId,
     $GitVersion,
     $TargetDefault,
@@ -116,6 +115,7 @@ function Publish-FirebaseSite(
     Write-Output "TargetDefault: $($TargetDefault)"
     Write-Output "TargetStage: $($TargetStage)"
     Write-Output "TargetProd: $($TargetProd)"
+    Write-Output ""
     
     if ($DeployTarget -eq $LocalDeployTarget) {
       Write-Output "DEPLOY SKIPPED!!!";
@@ -131,10 +131,7 @@ function Publish-FirebaseSite(
     Set-Location -Path $spaDir
     
     npm run build:firebase
-    
-    Write-Output "deploy targets: dev - $($developDeployTarget); stage - $($stagingDeployTarget); prod - $($prodDeployTarget)"
-    Write-Output "firebase use: dev - $($TargetDefault); stage - $($TargetStage); prod - $($TargetProd)"
-    
+        
     if ($DeployTarget -eq $developDeployTarget) {
       firebase use $TargetDefault --token $FirebaseToken
       Write-Output "firebase use $($TargetDefault)"

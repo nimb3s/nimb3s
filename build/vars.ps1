@@ -9,7 +9,6 @@ $localhostDeployTarget = 'LOCALHOST'
 
 
 #context
-$platform = IIf $env:PLATFORM  $env:PLATFORM  $localhostDeployTarget
 $isRunningOnBuildServer = IIf $env:APPVEYOR $true $false
 $buildDir = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location).Path
 
@@ -32,6 +31,8 @@ $gitVersion = gitversion | ConvertFrom-Json
 #release
 $releaseDir = Join-Path -Path $buildDir -ChildPath 'release'
 $artifactsDir = Join-Path -Path $buildDir -ChildPath 'artifacts'
+$nugetApiKey = IIf $env:NUGET_API_KEY $env:NUGET_API_KEY  "nuget api key missing"
+$nugetUrl = IIf $env:NUGET_URL $env:NUGET_URL "nuget url missing"
 
 #projects
 $spaDir = Join-Path -Path $buildDir -ChildPath 'src/spas' 
@@ -50,8 +51,10 @@ if ($isRunningOnBuildServer -eq $true) {
     }
 }
 
+#firebase
+$firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token using: firebase login:ci"
+
 Write-Output ""
-Write-Output "Platform: $($platform)"
 Write-Output "Running on build server: $($isRunningOnBuildServer)"
 Write-Output "Deploy target: $($envDeployTarget)"
 Write-Output ""

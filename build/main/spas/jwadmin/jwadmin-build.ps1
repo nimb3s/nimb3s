@@ -20,16 +20,17 @@ $artifactName = Publish-ReleasePackage `
     -ArtifactsDirectory $artifactsDir `
     -ReleaseDirectory $releaseDir `
     -IsRunningOnBuildServer $isRunningOnBuildServer `
-    -NugetApiKey (IIf $env:NUGET_API_KEY $env:NUGET_API_KEY  "nuget api key missing") `
-    -NugetUrl (IIf $env:NUGET_URL $env:NUGET_URL "nuget url missing")
+    -NugetApiKey $nugetApiKey`
+    -NugetUrl $nugetUrl
     
 Publish-FirebaseSite `
     -AppName $appName `
     -BuildDirectory $buildDir `
     -DeployTarget $envDeployTarget `
     -LocalDeployTarget $localhostDeployTarget `
+    -IsRunningOnBuildServer $isRunningOnBuildServer `
     -ArtifactName $artifactName `
-    -FirebaseToken (IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token using: firebase login:ci") `
+    -FirebaseToken $firebaseToken `
     -NugetPackageId $nugetPackgeId `
     -GitVersion $gitVersion `
     -TargetDefault "default-$($appName.ToLower())" `
