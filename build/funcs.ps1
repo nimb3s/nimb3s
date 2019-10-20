@@ -119,6 +119,8 @@ function Publish-FirebaseSite(
     
     npm run build:firebase
     
+    Write-Output "deploy targets: dev - $($developDeployTarget); stage - $($stagingDeployTarget); prod - $($prodDeployTarget)"
+    
     if ($DeployTarget -eq $developDeployTarget) {
       firebase use $TargetDefault --token $FirebaseToken
       Write-Output "firebase use $($TargetDefault)"
