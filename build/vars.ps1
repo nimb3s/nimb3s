@@ -1,6 +1,5 @@
 $undefined = 'UNDEFINED'
-$isCiRdpEnabledBeforeBuildStarts = $true
-$isCiRdpEnabledBeforeBuildEnds = $true
+$isCiServerRdpEnabled = $true
 
 #deploy
 $prodDeployTarget = 'PRODUCTION'
