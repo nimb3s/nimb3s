@@ -1,5 +1,5 @@
 $undefined = 'UNDEFINED'
-$isCiRdpEnabled = $false
+$isCiRdpEnabled = $true
 
 #deploy
 $prodDeployTarget = 'PRODUCTION'
