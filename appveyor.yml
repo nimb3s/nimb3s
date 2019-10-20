@@ -7,7 +7,6 @@ environment:
   FIREBASE_TOKEN:
     secure: uIKtL92nu3+FfTr+l5TzkYaFSQl1LoMqS05zWa0LGhPoWcT42/lByW2dZyX58Bk+
 cache:
-- C:\projects\nimb3s\src\spas\node_modules
 - C:\ProgramData\chocolatey\lib
 install:
   - ps: Install-Product node $env:nodejs_version
