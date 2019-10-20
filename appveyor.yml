@@ -4,13 +4,9 @@ environment:
     secure: DwIAi4qHSXn41RKBo96GO0oAKy9FnGcWFtzTr66SAnTCh8ccPF0W9A1q1jnqXH9T6NeLBUQwhGhNiIxTQOAjn0hN4ZZ5ffLEE/PKVdbPQ7E=
   NUGET_API_KEY:
     secure: D7jGgb0/aG3ZK37iQvglekDdDFItlz3FKgR716SSz0M=
-  NIMB3S_NUGET_PACKAGE_ID: Nimb3s.Spa
-  NIMB3S_NUGET_DESCRIPTION: Nimb3s Single Page App
-  NIMB3S_NUGET_TAGS: nimb3s angular web spa
   FIREBASE_TOKEN:
     secure: uIKtL92nu3+FfTr+l5TzkYaFSQl1LoMqS05zWa0LGhPoWcT42/lByW2dZyX58Bk+
 cache:
-- C:\projects\nimb3s\src\spas\node_modules
 - C:\ProgramData\chocolatey\lib
 install:
   - ps: Install-Product node $env:nodejs_version

@@ -3,6 +3,13 @@ Write-Output "PRE SCRIPTS: STARTED"
 Write-Output "******************************************"
 Write-Output "";
 
+#rdp
+if($isCiServerRdpEnabled) {
+    $blockRdp = $isCiServerRdpEnabled;
+    Invoke-Expression ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+    Write-Output ""
+}
+
 #tools
 #########################
 
@@ -18,8 +25,8 @@ choco install gitversion.portable --pre -y
 
 #directories
 #########################
-New-Item -ItemType Directory -Force -Path (Join-Path $buildFolder "artifacts")
-New-Item -ItemType Directory -Force -Path (Join-Path $buildFolder "release")
+New-Item -ItemType Directory -Force -Path (Join-Path $buildDir "artifacts")
+New-Item -ItemType Directory -Force -Path (Join-Path $buildDir "release")
 
 #build
 #########################

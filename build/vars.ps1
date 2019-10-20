@@ -1,5 +1,5 @@
 $undefined = 'UNDEFINED'
-$isCiRdpEnabled = $false
+$isCiServerRdpEnabled = $false
 
 #deploy
 $prodDeployTarget = 'PRODUCTION'
@@ -9,9 +9,8 @@ $localhostDeployTarget = 'LOCALHOST'
 
 
 #context
-$platform = IIf $env:PLATFORM  $env:PLATFORM  $localhostDeployTarget
 $isRunningOnBuildServer = IIf $env:APPVEYOR $true $false
-$buildFolder = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location)
+$buildDir = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location).Path
 
 #pull request
 $isPullRequest = $false
@@ -30,11 +29,13 @@ $buildTagName = IIf $env:APPVEYOR_REPO_TAG_NAME  $env:APPVEYOR_REPO_TAG_NAME  $u
 $gitVersion = gitversion | ConvertFrom-Json
 
 #release
-$releaseDir = Join-Path -Path $buildFolder -ChildPath 'release'
-$artifactsDir = Join-Path -Path $buildFolder -ChildPath 'artifacts'
+$releaseDir = Join-Path -Path $buildDir -ChildPath 'release'
+$artifactsDir = Join-Path -Path $buildDir -ChildPath 'artifacts'
+$nugetApiKey = IIf $env:NUGET_API_KEY $env:NUGET_API_KEY  "nuget api key missing"
+$nugetUrl = IIf $env:NUGET_URL $env:NUGET_URL "nuget url missing"
 
 #projects
-$spaDir = Join-Path -Path $buildFolder -ChildPath 'src/spas' 
+$spaDir = Join-Path -Path $buildDir -ChildPath 'src/spas' 
 $distDir = Join-Path -Path $spaDir -ChildPath 'dist'
 
 #environment
@@ -50,15 +51,17 @@ if ($isRunningOnBuildServer -eq $true) {
     }
 }
 
+#firebase
+$firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token using: firebase login:ci"
+
 Write-Output ""
-Write-Output "Platform: $($platform)"
 Write-Output "Running on build server: $($isRunningOnBuildServer)"
 Write-Output "Deploy target: $($envDeployTarget)"
 Write-Output ""
 
 Write-Output "DIRECTORIES:"
 Write-Output ""
-Write-Output "Build folder: $($buildFolder)"
+Write-Output "Build folder: $($buildDir)"
 Write-Output "Release dir: $($releaseDir)"
 Write-Output "Artifacts dir: $($artifactsDir)"
 Write-Output "Dist dir: $($distDir)"
@@ -81,4 +84,3 @@ Write-Output "Build started by pushed tag name: $($buildStartedByTag)"
 Write-Output "Git Version:"
 $gitVersion | Select-Object *
 Write-Output ""
-

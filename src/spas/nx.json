@@ -13,6 +13,12 @@
     },
     "nimb3s": {
       "tags": []
+    },
+    "jwadmin-e2e": {
+      "tags": []
+    },
+    "jwadmin": {
+      "tags": []
     }
   }
 }
