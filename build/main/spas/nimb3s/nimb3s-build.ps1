@@ -10,7 +10,7 @@ Build-AngularApp `
     -NpmInstallScript "build:install" `
     -NpmSiteBuildScript "build:$($appName.ToLower())"
 
-$artifactName = Publish-ReleasePackage `
+Publish-ReleasePackage `
     -FriendlyAppName $friendlyAppName `
     -BuildDirectory $buildDir `
     -NugetPackageId $nugetPackageId `
@@ -21,7 +21,8 @@ $artifactName = Publish-ReleasePackage `
     -ReleaseDirectory $releaseDir `
     -IsRunningOnBuildServer $isRunningOnBuildServer `
     -NugetApiKey $nugetApiKey `
-    -NugetUrl $nugetUrl
+    -NugetUrl $nugetUrl `
+    -GitVersion $gitVersion
     
 Publish-FirebaseSite `
     -AppName $appName `
@@ -34,5 +35,5 @@ Publish-FirebaseSite `
     -NugetPackageId $nugetPackgeId `
     -GitVersion $gitVersion `
     -TargetDefault "default" `
-    -TargetStage "stage", `
+    -TargetStage "stage" `
     -TargetProd "prod"

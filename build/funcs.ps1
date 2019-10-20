@@ -2,7 +2,7 @@ Function IIf($If, $IfTrue, $IfFalse) {
     if ($If) {if ($IfTrue -is 'ScriptBlock') {&$IfTrue} else {$IfTrue}}
     else {if ($IfFalse -is 'ScriptBlock') {&$IfFalse} else {$IfFalse}}
 }
-function Build-AngularApp(
+function Build-AngularApp (
     $FriendlyAppName,
     $SpaDirecotry,
     $SiteRootDirectory,
@@ -30,8 +30,7 @@ function Build-AngularApp(
     Write-Output "******************************************"
     Write-Output "";
 }
-
-function Publish-ReleasePackage(
+function Publish-ReleasePackage (
     $FriendlyAppName,
     $BuildDirectory,
     $NugetPackageId,
@@ -42,7 +41,8 @@ function Publish-ReleasePackage(
     $ReleaseDirectory,
     $IsRunningOnBuildServer,
     $NugetApiKey,
-    $NugetUrl
+    $NugetUrl,
+    $GitVersion
 ) {
     Write-Output "";
     Write-Output "******************************************"
@@ -85,13 +85,12 @@ function Publish-ReleasePackage(
     return $artifactName
 }
 
-function Publish-FirebaseSite(
+function Publish-FirebaseSite (
     $AppName,
     $BuildDirectory,
     $DeployTarget,
     $LocalDeployTarget,
     $IsRunningOnBuildServer,
-    $ArtifactName,
     $NugetPackgeId,
     $GitVersion,
     $TargetDefault,
@@ -102,27 +101,15 @@ function Publish-FirebaseSite(
     Write-Output "$($AppName): DEPLOY STARTED"
     Write-Output "******************************************"
     Write-Output "";
+   
+    $artifact = "$($NugetPackageId).$($GitVersion.NuGetVersionV2)-$($GitVersion.CommitsSinceVersionSource)"
 
-    Write-Output "AppName: $($AppName)"
-    Write-Output "BuildDirectory: $($BuildDirectory)"
-    Write-Output "DeployTarget: $($DeployTarget)"
-    Write-Output "LocalDeployTarget: $($LocalDeployTarget)"
-    Write-Output "IsRunningOnBuildServer: $($IsRunningOnBuildServer)"
-    Write-Output "ArtifactName: $($ArtifactName)"
-    Write-Output "FirebaseToken: $($FirebaseToken)"
-    Write-Output "NugetPackgeId: $($NugetPackgeId)"
-    Write-Output "GitVersion: $($GitVersion.InformationalVersion)"
-    Write-Output "TargetDefault: $($TargetDefault)"
-    Write-Output "TargetStage: $($TargetStage)"
-    Write-Output "TargetProd: $($TargetProd)"
-    Write-Output ""
-    
     if ($DeployTarget -eq $LocalDeployTarget) {
       Write-Output "DEPLOY SKIPPED!!!";
       Write-Output "";
     
       if ($IsRunningOnBuildServer -eq $true) {
-        Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($ArtifactName)" -Category Information
+        Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($artifact)" -Category Information
       }
       
       return;
@@ -152,7 +139,7 @@ function Publish-FirebaseSite(
     Write-Output "";
     
     if ($IsRunningOnBuildServer -eq $true) {
-      Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($ArtifactName)" -Category Information
+      Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($artifact)" -Category Information
     }
 
     Set-Location -Path $BuildDirectory
