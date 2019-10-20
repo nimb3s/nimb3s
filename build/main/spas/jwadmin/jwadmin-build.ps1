@@ -33,5 +33,5 @@ Publish-FirebaseSite `
     -NugetPackageId $nugetPackgeId `
     -GitVersion $gitVersion `
     -TargetDefault "default-$($appName.ToLower())" `
-    -TargetStage "stage-$($appName.ToLower())", `
+    -TargetStage "stage-$($appName.ToLower())" `
     -TargetProd "prod-$($appName.ToLower())"

@@ -82,7 +82,7 @@ function Publish-ReleasePackage(
     Write-Output "******************************************"
     Write-Output "";
 
-    $artifactName
+    return $artifactName
 }
 
 function Publish-FirebaseSite(
