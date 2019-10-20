@@ -4,9 +4,9 @@ Write-Output "******************************************"
 Write-Output "";
 
 
-if ($isCiRdpEnabledBeforeBuildStarts -eq $true -and $isCiRdpEnabledBeforeBuildEnds -eq $true) {
-    Write-Output "CI RDP SESSION WILL NOT BE ENABLED!!!: Either enable RDP before build starts or before it ends. Not both" 
-}
+# if ($isCiRdpEnabledBeforeBuildStarts -eq $true -and $isCiRdpEnabledBeforeBuildEnds -eq $true) {
+#     Write-Output "CI RDP SESSION WILL NOT BE ENABLED!!!: Either enable RDP before build starts or before it ends. Not both" 
+# }
 
 if ($isCiRdpEnabledBeforeBuildStarts -eq $true -and $isCiRdpEnabledBeforeBuildEnds -eq $false) {
     Invoke-Expression ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
