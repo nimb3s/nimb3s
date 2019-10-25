@@ -32,7 +32,7 @@ The gist:
 
 ### <a name="fs-security-rules"></a>2. Deploying Security Rules
 
-1.  `firestore deploy --only firestore:rules`
+1.  `firebase deploy --only firestore:rules`
 2.  If the deploy was successfull you'll see something like this in the console:
 
 ```

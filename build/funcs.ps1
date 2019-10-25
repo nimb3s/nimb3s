@@ -129,6 +129,13 @@ function Publish-FirebaseSite (
       firebase use $TargetProd --token $FirebaseToken
       Write-Output "firebase use $($TargetProd)"
     }
+
+    #set project specific path to firestore.rules in firebase.json
+
+    #set project specific path to firestore.indexes in firebase.json
+
+    Write-Output "firebase deploy --only firestore:rules"
+    firebase deploy --only firestore:rules
     
     Write-Output "firebase deploy --only hosting:$($AppName.ToLower()) --message $($NugetPackageId).$($GitVersion.InformationalVersion) --token $($FirebaseToken)"
     firebase deploy --only hosting:$($AppName.ToLower()) --message "$($NugetPackageId).$($GitVersion.InformationalVersion)" --token $FirebaseToken
