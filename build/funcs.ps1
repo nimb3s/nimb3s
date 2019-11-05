@@ -3,35 +3,39 @@ Function IIf($If, $IfTrue, $IfFalse) {
     else {if ($IfFalse -is 'ScriptBlock') {&$IfFalse} else {$IfFalse}}
 }
 function Build-AngularApp (
-    $FriendlyAppName,
-    $SpaDirecotry,
+    $AppName,
+    $SpaDirectory,
     $SiteRootDirectory,
     $DistDirectory,
     $NpmInstallScript,
     $NpmSiteBuildScript
 ) {
     Write-Output "******************************************"
-    Write-Output "$($FriendlyAppName): BUILD STARTED"
+    Write-Output "$($AppName): BUILD STARTED"
     Write-Output "******************************************"
 
     $projectDistDir = Join-Path -Path $DistDirectory -ChildPath $SiteRootDirectory
     
-    Write-Output "changed working directory to $($SpaDirecotry)"
+    Write-Output "changed working directory to $($SpaDirectory)"
     Write-Output "running npm.v.$(npm -v)"
     Write-Output "project dist: $($projectDistDir)"
     
-    Set-Location -Path $SpaDirecotry
+    Set-Location -Path $SpaDirectory
     
     npm run $NpmInstallScript
     npm run $NpmSiteBuildScript
     
     Write-Output "******************************************"
-    Write-Output "$($FriendlyAppName): BUILD ENDED"
+    Write-Output "$($AppName): BUILD ENDED"
     Write-Output "******************************************"
     Write-Output "";
+
+    if ($IsExecutingOnBuildServer -eq $true) {
+      Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): angular app build finished: $($projectDistDir)" -Category Information
+    }
 }
 function Publish-ReleasePackage (
-    $FriendlyAppName,
+    $AppName,
     $BuildDirectory,
     $NugetPackageId,
     $NugetPackageDescription,
@@ -39,27 +43,27 @@ function Publish-ReleasePackage (
     $NugetFileTargets,
     $ArtifactsDirectory,
     $ReleaseDirectory,
-    $IsRunningOnBuildServer,
-    $NugetApiKey,
-    $NugetUrl,
-    $GitVersion
+    $IsExecutingOnBuildServer,
+    $NugetFeedApiKey,
+    $NugetFeedUrl,
+    $GitVersioning
 ) {
     Write-Output "";
     Write-Output "******************************************"
-    Write-Output "$($FriendlyAppName): RELEASE STARTED"
+    Write-Output "$($AppName): RELEASE STARTED"
     Write-Output "******************************************"
     Write-Output "";
 
     $nuspecFile = Join-Path -Path $BuildDirectory -ChildPath "release/$($NugetPackageId).nuspec"
     $nuspecTemplate = Join-Path -Path $BuildDirectory -ChildPath "nuspec.template"
     $lastCommitMessage = git log -1 --pretty=%B
-    $artifactName = "$($NugetPackageId).$($GitVersion.NuGetVersionV2)-$($GitVersion.CommitsSinceVersionSource)"
+    $artifactName = "$($NugetPackageId).$($GitVersioning.NuGetVersionV2)-$($GitVersioning.CommitsSinceVersionSource)"
     $artifactNupkg = Join-Path -Path $BuildDirectory -ChildPath "artifacts/$($artifactName).nupkg"
 
     Set-Location -Path $BuildDirectory
     
     Get-Content ($nuspecTemplate) | ForEach-Object { 
-      $_ -replace '@version', -join($GitVersion.NuGetVersionV2, "-", $GitVersion.CommitsSinceVersionSource) `
+      $_ -replace '@version', -join($GitVersioning.NuGetVersionV2, "-", $GitVersioning.CommitsSinceVersionSource) `
          -replace "@id", "$($NugetPackageId)" `
          -replace "@releaseNotes", $lastCommitMessage `
          -replace "@description", "$($NugetPackageDescription)" `
@@ -69,84 +73,124 @@ function Publish-ReleasePackage (
 
     nuget pac (Join-path -Path $ReleaseDirectory -ChildPath "$($NugetPackageId).nuspec") -OutputDirectory $ArtifactsDirectory
 
-    if ($IsRunningOnBuildServer -eq $true) {
+    if ($IsExecutingOnBuildServer -eq $true) {
       Push-AppveyorArtifact $artifactNupkg
-      Write-Output "nuget push $($artifactNupkg) -ApiKey $($NugetApiKey) -Source $($NugetUrl)"
+      Write-Output "nuget push $($artifactNupkg) -ApiKey $($NugetFeedApiKey) -Source $($NugetFeedUrl)"
     
-      nuget push $artifactNupkg -ApiKey $NugetApiKey -Source $NugetUrl
+      nuget push $artifactNupkg -ApiKey $NugetFeedApiKey -Source $NugetFeedUrl
     }
 
     Write-Output "";
     Write-Output "******************************************"
-    Write-Output "$($FriendlyAppName): RELEASE ENDED"
+    Write-Output "$($AppName): RELEASE ENDED"
     Write-Output "******************************************"
     Write-Output "";
 
-    return $artifactName
+    if ($IsExecutingOnBuildServer -eq $true) {
+      Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): release package published: $($artifactName)" -Category Information
+    }
 }
-
 function Publish-FirebaseSite (
     $AppName,
+    $SpaDirectory,
+    $AppSpaDirectory,
     $BuildDirectory,
     $DeployTarget,
     $LocalDeployTarget,
-    $IsRunningOnBuildServer,
+    $IsExecutingOnBuildServer,
     $NugetPackgeId,
-    $GitVersion,
+    $GitVersioning,
     $TargetDefault,
     $TargetStage,
-    $TargetProd
+    $TargetProd,
+    $FirebaseKey,
+    $FirebaseRulesConfigFile,
+    $FirebasIndexConfigFile
 ) {
     Write-Output "******************************************"
     Write-Output "$($AppName): DEPLOY STARTED"
     Write-Output "******************************************"
     Write-Output "";
-   
-    $artifact = "$($NugetPackageId).$($GitVersion.NuGetVersionV2)-$($GitVersion.CommitsSinceVersionSource)"
+
+    #skip deploy if not running on build server
 
     if ($DeployTarget -eq $LocalDeployTarget) {
       Write-Output "DEPLOY SKIPPED!!!";
       Write-Output "";
     
-      if ($IsRunningOnBuildServer -eq $true) {
-        Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($artifact)" -Category Information
+      if ($IsExecutingOnBuildServer -eq $true) {
+        Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): firebase app publish SKIPPED!!!: $($artifact)" -Category Information
       }
       
       return;
     }
+
+    $artifact = "$($NugetPackageId).$($GitVersioning.NuGetVersionV2)-$($GitVersioning.CommitsSinceVersionSource)"
     
-    Set-Location -Path $spaDir
+    Set-Location -Path $SpaDirectory
     
+    #install firebase tools
+
     npm run build:firebase
-        
+    
+    #set firebase target
+
     if ($DeployTarget -eq $developDeployTarget) {
-      firebase use $TargetDefault --token $FirebaseToken
-      Write-Output "firebase use $($TargetDefault)"
+      firebase use $TargetDefault --token $FirebaseKey
+      Write-Output "using firebase target: $($TargetDefault)"
     } elseif ($DeployTarget -eq $stagingDeployTarget) {
-      firebase use $TargetStage --token $FirebaseToken
-      Write-Output "firebase use $($TargetStage)"
+      firebase use $TargetStage --token $FirebaseKey
+      Write-Output "using firebase target: $($TargetStage)"
     } elseif ($DeployTarget -eq $prodDeployTarget) {
-      firebase use $TargetProd --token $FirebaseToken
-      Write-Output "firebase use $($TargetProd)"
+      firebase use $TargetProd --token $FirebaseKey
+      Write-Output "using firebase target: $($TargetProd)"
     }
 
-    #set project specific path to firestore.rules in firebase.json
+    #config files
 
-    #set project specific path to firestore.indexes in firebase.json
+    $firestoreRulesFileName = "firestore.rules"
+    $firestoreIndexesFileName = "firestore.indexes.json"
 
-    Write-Output "firebase deploy --only firestore:rules"
-    firebase deploy --only firestore:rules
+    $thisAppRulesConfigFile = Join-Path -Path $AppSpaDirectory -ChildPath $firestoreRulesFileName
+    $thisAppIndexConfigFile = Join-Path -Path $AppSpaDirectory -ChildPath $firestoreIndexesFileName
+
+    $rulesConfigFile = Join-Path -Path $SpaDirectory -ChildPath $firestoreRulesFileName
+    $indexConfigFile = Join-Path -Path $SpaDirectory -ChildPath $firestoreIndexesFileName
+
+    if (Test-Path $thisAppRulesConfigFile -PathType leaf)
+    {
+      Write-Output "using security rules in: $($thisAppRulesConfigFile)"
+      Copy-Item $thisAppRulesConfigFile  $rulesConfigFile -Force
+
+      Write-Output "firebase deploy --only firestore:rules"
+      firebase deploy --only firestore:rules
+    }
+
+    if (Test-Path $indexConfigFile -PathType leaf)
+    {
+      Remove-Item $indexConfigFile -Force
+    } 
+
+    if (Test-Path $thisAppRulesConfigFile -PathType leaf)
+    {
+      Write-Output "using indexes in: $($thisAppIndexConfigFile)"
+      Copy-Item $thisAppIndexConfigFile  $indexConfigFile -Force
+
+      #firebase deploy --only firestore:indexes
+    }    
+
+    #deploy
     
-    Write-Output "firebase deploy --only hosting:$($AppName.ToLower()) --message $($NugetPackageId).$($GitVersion.InformationalVersion) --token $($FirebaseToken)"
-    firebase deploy --only hosting:$($AppName.ToLower()) --message "$($NugetPackageId).$($GitVersion.InformationalVersion)" --token $FirebaseToken
+    Write-Output "firebase deploy --only hosting:$($AppName.ToLower()) --message $($NugetPackageId).$($GitVersioning.InformationalVersion) --token $($FirebaseKey)"
+    firebase deploy --only hosting:$($AppName.ToLower()) --message "$($NugetPackageId).$($GitVersioning.InformationalVersion)" --token $FirebaseKey
     
     Write-Output "******************************************"
     Write-Output "$($AppName): DEPLOY ENDED"
     Write-Output "******************************************"
     Write-Output "";
     
-    if ($IsRunningOnBuildServer -eq $true) {
-      Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): Release/Deployed ended: $($artifact)" -Category Information
+    if ($IsExecutingOnBuildServer -eq $true) {
+      Add-AppveyorMessage -Message "$(get-date -format "MM/dd/yyy HH:mm:ss.ffff"): firebase app published: $($artifact)" -Category Information
     }
 
     Set-Location -Path $BuildDirectory

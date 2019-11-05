@@ -7,7 +7,6 @@ $developDeployTarget = 'DEVELOP'
 $stagingDeployTarget = 'STAGING'
 $localhostDeployTarget = 'LOCALHOST'
 
-
 #context
 $isRunningOnBuildServer = IIf $env:APPVEYOR $true $false
 $buildDir = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location).Path
@@ -50,6 +49,8 @@ if ($isRunningOnBuildServer -eq $true) {
         $envDeployTarget = $stagingDeployTarget
     }
 }
+
+$envDeployTarget = $developDeployTarget
 
 #firebase
 $firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token using: firebase login:ci"
