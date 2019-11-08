@@ -50,8 +50,6 @@ if ($isRunningOnBuildServer -eq $true -and $isPullRequest -eq $false) {
     }
 }
 
-$envDeployTarget = $developDeployTarget
-
 #firebase
 $firebaseToken = IIf $env:FIREBASE_TOKEN $env:FIREBASE_TOKEN "generate a token using: firebase login:ci"
 
