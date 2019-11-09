@@ -336,6 +336,40 @@
           "styleext": "scss"
         }
       }
+    },
+    "module-wrappers-firebase": {
+      "projectType": "library",
+      "root": "libs/module-wrappers/firebase",
+      "sourceRoot": "libs/module-wrappers/firebase/src",
+      "prefix": "nbmw",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/module-wrappers/firebase/tsconfig.lib.json",
+              "libs/module-wrappers/firebase/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/module-wrappers/firebase/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/module-wrappers/firebase/jest.config.js",
+            "tsConfig": "libs/module-wrappers/firebase/tsconfig.spec.json",
+            "setupFile": "libs/module-wrappers/firebase/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

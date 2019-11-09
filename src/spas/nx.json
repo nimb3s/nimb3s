@@ -28,6 +28,9 @@
     },
     "feature-auth": {
       "tags": ["feature"]
+    },
+    "module-wrappers-firebase": {
+      "tags": ["module-wrapper"]
     }
   }
 }
