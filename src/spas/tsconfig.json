@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@spas/services/auth-service": ["libs/services/auth-service/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

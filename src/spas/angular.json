@@ -243,6 +243,37 @@
           }
         }
       }
+    },
+    "services-auth-service": {
+      "projectType": "library",
+      "root": "libs/services/auth-service",
+      "sourceRoot": "libs/services/auth-service/src",
+      "prefix": "as",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/services/auth-service/tsconfig.lib.json",
+              "libs/services/auth-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/services/auth-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/services/auth-service/jest.config.js",
+            "tsConfig": "libs/services/auth-service/tsconfig.spec.json",
+            "setupFile": "libs/services/auth-service/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

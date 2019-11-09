@@ -19,6 +19,9 @@
     },
     "jwadmin": {
       "tags": []
+    },
+    "services-auth-service": {
+      "tags": ["auth"]
     }
   }
 }
