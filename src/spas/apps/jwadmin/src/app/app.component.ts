@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'spas-root',
+  selector: 'jw-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'jwadmin';
+
+  signIn() {
+    console.log('signed in from jw admin');
+  }
 }

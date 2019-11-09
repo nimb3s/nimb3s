@@ -1,5 +1,5 @@
 {
-  "npmScope": "spas",
+  "npmScope": "nimb3s",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",

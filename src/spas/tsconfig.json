@@ -16,10 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@spas/services/auth-service": [
+      "@nimb3s/services/auth-service": [
         "libs/services/auth-service/src/index.ts"
       ],
-      "@spas/ui/auth": ["libs/ui/auth/src/index.ts"]
+      "@nimb3s/ui/auth": ["libs/ui/auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

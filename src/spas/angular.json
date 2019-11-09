@@ -10,7 +10,7 @@
       },
       "root": "apps/nimb3s",
       "sourceRoot": "apps/nimb3s/src",
-      "prefix": "spas",
+      "prefix": "nb",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -130,7 +130,7 @@
       },
       "root": "apps/jwadmin",
       "sourceRoot": "apps/jwadmin/src",
-      "prefix": "spas",
+      "prefix": "jw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

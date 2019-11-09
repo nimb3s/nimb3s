@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'nb-sign-in-button',
@@ -8,7 +7,7 @@ import { EventEmitter } from 'events';
 })
 export class SignInButtonComponent implements OnInit {
 
-  @Output() userSignIn: EventEmitter;
+  @Output() userSignIn = new EventEmitter();
 
   constructor() { }
 
