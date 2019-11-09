@@ -22,6 +22,9 @@
     },
     "services-auth-service": {
       "tags": ["auth"]
+    },
+    "ui-auth": {
+      "tags": ["ui"]
     }
   }
 }
