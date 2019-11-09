@@ -10,7 +10,7 @@
       },
       "root": "apps/nimb3s",
       "sourceRoot": "apps/nimb3s/src",
-      "prefix": "spas",
+      "prefix": "nb",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -130,7 +130,7 @@
       },
       "root": "apps/jwadmin",
       "sourceRoot": "apps/jwadmin/src",
-      "prefix": "spas",
+      "prefix": "jw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -241,6 +241,133 @@
             "tsConfig": ["apps/jwadmin-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/jwadmin-e2e/**"]
           }
+        }
+      }
+    },
+    "services-auth-service": {
+      "projectType": "library",
+      "root": "libs/services/auth-service",
+      "sourceRoot": "libs/services/auth-service/src",
+      "prefix": "as",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/services/auth-service/tsconfig.lib.json",
+              "libs/services/auth-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/services/auth-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/services/auth-service/jest.config.js",
+            "tsConfig": "libs/services/auth-service/tsconfig.spec.json",
+            "setupFile": "libs/services/auth-service/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ui-auth": {
+      "projectType": "library",
+      "root": "libs/ui/auth",
+      "sourceRoot": "libs/ui/auth/src",
+      "prefix": "nbui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/auth/tsconfig.lib.json",
+              "libs/ui/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/auth/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/auth/jest.config.js",
+            "tsConfig": "libs/ui/auth/tsconfig.spec.json",
+            "setupFile": "libs/ui/auth/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "feature-auth": {
+      "projectType": "library",
+      "root": "libs/feature/auth",
+      "sourceRoot": "libs/feature/auth/src",
+      "prefix": "nbf",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/auth/tsconfig.lib.json",
+              "libs/feature/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/auth/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/auth/jest.config.js",
+            "tsConfig": "libs/feature/auth/tsconfig.spec.json",
+            "setupFile": "libs/feature/auth/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "module-wrappers-firebase": {
+      "projectType": "library",
+      "root": "libs/module-wrappers/firebase",
+      "sourceRoot": "libs/module-wrappers/firebase/src",
+      "prefix": "nbmw",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/module-wrappers/firebase/tsconfig.lib.json",
+              "libs/module-wrappers/firebase/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/module-wrappers/firebase/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/module-wrappers/firebase/jest.config.js",
+            "tsConfig": "libs/module-wrappers/firebase/tsconfig.spec.json",
+            "setupFile": "libs/module-wrappers/firebase/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }
