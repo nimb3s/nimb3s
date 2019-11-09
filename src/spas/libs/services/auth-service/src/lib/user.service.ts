@@ -18,7 +18,7 @@ user$: Observable<User>;
     constructor(
         private firestoreAuth: AngularFireAuth,
         private firestore: AngularFirestore,
-        private router: Router
+        // private router: Router
     ) {
         // Get the auth state, then fetch the Firestore user document or return null
         this.user$ = this.firestoreAuth.authState.pipe(
@@ -57,7 +57,7 @@ user$: Observable<User>;
 
     async signOut() {
     await this.firestoreAuth.auth.signOut();
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
     }
 
 }

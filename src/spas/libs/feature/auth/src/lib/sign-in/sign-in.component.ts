@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@nimb3s/services/auth-service';
 
 @Component({
   selector: 'nbf-sign-in',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
 
   signIn() {
-    console.log('in feature component');
+    this.authService.googleSignin();
   }
 }

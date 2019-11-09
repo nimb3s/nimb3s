@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { ModuleWrappersFirebaseModule } from './module-wrappers-firebase.module';
+import { FirebaseModuleWrapper } from './module-wrappers-firebase.module';
 
-describe('ModuleWrappersFirebaseModule', () => {
+describe('FirebaseModuleWrapper', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ModuleWrappersFirebaseModule]
+      imports: [FirebaseModuleWrapper]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(ModuleWrappersFirebaseModule).toBeDefined();
+    expect(FirebaseModuleWrapper).toBeDefined();
   });
 });
