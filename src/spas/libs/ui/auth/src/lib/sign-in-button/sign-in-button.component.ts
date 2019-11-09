@@ -17,7 +17,7 @@ export class SignInButtonComponent implements OnInit {
 
   signIn() {
     this.userSignIn.emit(null);
-    console.log('user signed in');
+    console.log('in lib');
   }
 
 }
