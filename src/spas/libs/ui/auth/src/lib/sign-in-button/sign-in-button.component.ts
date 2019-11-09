@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'nb-sign-in-button',
+  selector: 'nbui-sign-in-button',
   templateUrl: './sign-in-button.component.html',
   styleUrls: ['./sign-in-button.component.scss']
 })
