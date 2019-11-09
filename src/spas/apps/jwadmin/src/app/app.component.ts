@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'jwadmin';
-
-  signIn() {
-    console.log('signed in from jw admin');
-  }
 }

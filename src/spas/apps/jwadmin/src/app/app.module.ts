@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { UiAuthModule } from '@nimb3s/ui/auth';
 
+import { FeatureAuthModule } from '@nimb3s/feature/auth';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    UiAuthModule
+    FeatureAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
