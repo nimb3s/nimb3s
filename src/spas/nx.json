@@ -25,6 +25,9 @@
     },
     "ui-auth": {
       "tags": ["ui"]
+    },
+    "feature-auth": {
+      "tags": ["feature"]
     }
   }
 }

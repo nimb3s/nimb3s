@@ -19,7 +19,8 @@
       "@nimb3s/services/auth-service": [
         "libs/services/auth-service/src/index.ts"
       ],
-      "@nimb3s/ui/auth": ["libs/ui/auth/src/index.ts"]
+      "@nimb3s/ui/auth": ["libs/ui/auth/src/index.ts"],
+      "@nimb3s/feature/auth": ["libs/feature/auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
