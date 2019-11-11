@@ -7,6 +7,8 @@ if ($envDeployTarget -eq $stagingDeployTarget) {
     $npmBuildScript = "build:$($appName.ToLower())-stage"
 } elseif ($envDeployTarget -eq $prodDeployTarget) {
     $npmBuildScript = "build:$($appName.ToLower())-prod"
+} else {
+    $npmBuildScript = "build:$($appName.ToLower())-dev"
 }
 
 Build-AngularApp `
