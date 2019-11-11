@@ -3,13 +3,21 @@ $friendlyAppName = "SPA $($appName)"
 $nugetPkgId = "$($appName).Spa"
 $appSpaDir = Join-Path -Path $spaDir -ChildPath "apps/$appName"
 
+if ($envDeployTarget -eq $stagingDeployTarget) {
+    $npmBuildScript = "build:$($appName.ToLower())-stage"
+} elseif ($envDeployTarget -eq $prodDeployTarget) {
+    $npmBuildScript = "build:$($appName.ToLower())-prod"
+} else {
+    $npmBuildScript = "build:$($appName.ToLower())-dev"
+}
+
 Build-AngularApp `
     -AppName $friendlyAppName `
     -SpaDirectory $spaDir `
     -SiteRootDirectory "apps/$($appName.ToLower())/*" `
     -DistDirectory $distDir `
     -NpmInstallScript "build:install" `
-    -NpmSiteBuildScript "build:$($appName.ToLower())"
+    -NpmSiteBuildScript $npmBuildScript
 
 Publish-ReleasePackage `
     -AppName $friendlyAppName `
