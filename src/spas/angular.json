@@ -88,7 +88,7 @@
               "fileReplacements": [
                 {
                   "replace": "apps/nimb3s/src/environments/environment.ts",
-                  "with": "apps/nimb3s/src/environments/environment.stage.ts"
+                  "with": "apps/nimb3s/src/environments/environment.dev.ts"
                 }
               ],
               "optimization": true,
@@ -269,7 +269,7 @@
               "fileReplacements": [
                 {
                   "replace": "apps/jwadmin/src/environments/environment.ts",
-                  "with": "apps/jwadmin/src/environments/environment.stage.ts"
+                  "with": "apps/jwadmin/src/environments/environment.dev.ts"
                 }
               ],
               "optimization": true,
