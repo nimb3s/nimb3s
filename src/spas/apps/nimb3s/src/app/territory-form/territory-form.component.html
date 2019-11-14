@@ -1,0 +1,60 @@
+<h1>Territory Form</h1>
+
+  <form [formGroup]="territoryForm" (ngSubmit)="onSubmit()">
+              <div>
+                  <label>Territory Number:</label>
+                  <input
+                    type="text"
+                    formControlName="territoryNumber">
+              </div>
+              <div>
+                  <label>Street Name:</label>
+                  <input
+                    type="text"
+                    formControlName="streetName">
+              </div>
+              <div>
+                  <label>House Number:</label>
+                  <input
+                    type="text"
+                    formControlName="houseNumber">
+              </div>
+              <div>
+                  <label>City:</label>
+                  <input
+                    type="text"
+                    formControlName="city">
+              </div>
+              <div>
+                  <label>State:</label>
+                  <input
+                    type="text"
+                    formControlName="state">
+              </div>
+              <div>
+                  <label>Zip Code:</label>
+                  <input
+                    type="text"
+                    formControlName="zipCode">
+              </div>
+              <div>
+                  <label>Outcome:</label>
+                  <input
+                    type="text"
+                    formControlName="outcome">
+              </div>
+              <div>
+                  <label>Date:</label>
+                  <input
+                    type="text"
+                    formControlName="date">
+              </div>
+              <div>
+                  <label>Language:</label>
+                  <input
+                    type="text"
+                    formControlName="language">
+              </div>
+            <button type="submit">Submit</button>
+  </form>
+
