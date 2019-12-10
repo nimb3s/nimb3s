@@ -1,39 +1,50 @@
 $appName = "Nimb3s"
 $friendlyAppName = "SPA $($appName)"
-$nugetPackageId = "$($appName).Spa"
+$nugetPkgId = "$($appName).Spa"
+$appSpaDir = Join-Path -Path $spaDir -ChildPath "apps/$appName"
+
+if ($envDeployTarget -eq $stagingDeployTarget) {
+    $npmBuildScript = "build:$($appName.ToLower())-stage"
+} elseif ($envDeployTarget -eq $prodDeployTarget) {
+    $npmBuildScript = "build:$($appName.ToLower())-prod"
+} else {
+    $npmBuildScript = "build:$($appName.ToLower())-dev"
+}
 
 Build-AngularApp `
-    -FriendlyAppName $friendlyAppName `
-    -SpaDirecotry $spaDir `
+    -AppName $friendlyAppName `
+    -SpaDirectory $spaDir `
     -SiteRootDirectory "apps/$($appName.ToLower())/*" `
     -DistDirectory $distDir `
     -NpmInstallScript "build:install" `
-    -NpmSiteBuildScript "build:$($appName.ToLower())"
+    -NpmSiteBuildScript $npmBuildScript
 
 Publish-ReleasePackage `
-    -FriendlyAppName $friendlyAppName `
+    -AppName $friendlyAppName `
     -BuildDirectory $buildDir `
-    -NugetPackageId $nugetPackageId `
+    -IsExecutingOnBuildServer $isRunningOnBuildServer `
+    -ArtifactsDirectory $artifactsDir `
+    -ReleaseDirectory $releaseDir `
+    -GitVersioning $gitVersion `
+    -NugetPackageId $nugetPkgId `
     -NugetPackageDescription "$($appName) Single Page App" `
     -NugetTags "nimb3s angular web spa" `
     -NugetFileTargets @( ,("<file src=`"..\src\spas\dist\apps\$($appName.ToLower())\**\*`" target=`"dist`" />")) `
-    -ArtifactsDirectory $artifactsDir `
-    -ReleaseDirectory $releaseDir `
-    -IsRunningOnBuildServer $isRunningOnBuildServer `
-    -NugetApiKey $nugetApiKey `
-    -NugetUrl $nugetUrl `
-    -GitVersion $gitVersion
+    -NugetFeedApiKey $nugetApiKey `
+    -NugetFeedUrl $nugetUrl
     
 Publish-FirebaseSite `
     -AppName $appName `
+    -SpaDirectory $spaDir `
+    -AppSpaDirectory $appSpaDir `
     -BuildDirectory $buildDir `
+    -IsExecutingOnBuildServer $isRunningOnBuildServer `
     -DeployTarget $envDeployTarget `
     -LocalDeployTarget $localhostDeployTarget `
-    -IsRunningOnBuildServer $isRunningOnBuildServer `
-    -ArtifactName $artifactName `
-    -FirebaseToken $firebaseToken `
-    -NugetPackageId $nugetPackgeId `
-    -GitVersion $gitVersion `
     -TargetDefault "default" `
     -TargetStage "stage" `
-    -TargetProd "prod"
+    -TargetProd "prod" `
+    -FirebaseKey $firebaseToken `
+    -NugetPackageId $nugetPkgId `
+    -GitVersioning $gitVersion
+    

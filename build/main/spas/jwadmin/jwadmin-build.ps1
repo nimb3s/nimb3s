@@ -1,38 +1,49 @@
 $appName = "JwAdmin"
 $friendlyAppName = "SPA $($appName)"
-$nugetPackageId = "$($appName).Spa"
+$nugetPkgId = "$($appName).Spa"
+$appSpaDir = Join-Path -Path $spaDir -ChildPath "apps/$appName"
+
+if ($envDeployTarget -eq $stagingDeployTarget) {
+    $npmBuildScript = "build:$($appName.ToLower())-stage"
+} elseif ($envDeployTarget -eq $prodDeployTarget) {
+    $npmBuildScript = "build:$($appName.ToLower())-prod"
+} else {
+    $npmBuildScript = "build:$($appName.ToLower())-dev"
+}
 
 Build-AngularApp `
-    -FriendlyAppName $friendlyAppName `
-    -SpaDirecotry $spaDir `
+    -AppName $friendlyAppName `
+    -SpaDirectory $spaDir `
     -SiteRootDirectory "apps/$($appName.ToLower())/*" `
     -DistDirectory $distDir `
     -NpmInstallScript "build:install" `
-    -NpmSiteBuildScript "build:$($appName.ToLower())"
+    -NpmSiteBuildScript $npmBuildScript
 
 Publish-ReleasePackage `
-    -FriendlyAppName $friendlyAppName `
+    -AppName $friendlyAppName `
     -BuildDirectory $buildDir `
-    -NugetPackageId $nugetPackageId `
+    -IsExecutingOnBuildServer $isRunningOnBuildServer `
+    -ArtifactsDirectory $artifactsDir `
+    -ReleaseDirectory $releaseDir `
+    -GitVersioning $gitVersion `
+    -NugetPackageId $nugetPkgId `
     -NugetPackageDescription "$($appName) Single Page App" `
     -NugetTags "nimb3s jwadmin angular web spa" `
     -NugetFileTargets @( ,("<file src=`"..\src\spas\dist\apps\$($appName.ToLower())\**\*`" target=`"dist`" />")) `
-    -ArtifactsDirectory $artifactsDir `
-    -ReleaseDirectory $releaseDir `
-    -IsRunningOnBuildServer $isRunningOnBuildServer `
-    -NugetApiKey $nugetApiKey `
-    -NugetUrl $nugetUrl `
-    -GitVersion $gitVersion
+    -NugetFeedApiKey $nugetApiKey `
+    -NugetFeedUrl $nugetUrl
     
 Publish-FirebaseSite `
     -AppName $appName `
+    -SpaDirectory $spaDir `
+    -AppSpaDirectory $appSpaDir `
     -BuildDirectory $buildDir `
+    -IsExecutingOnBuildServer $isRunningOnBuildServer `
     -DeployTarget $envDeployTarget `
     -LocalDeployTarget $localhostDeployTarget `
-    -IsRunningOnBuildServer $isRunningOnBuildServer `
-    -FirebaseToken $firebaseToken `
-    -NugetPackageId $nugetPackgeId `
-    -GitVersion $gitVersion `
     -TargetDefault "default-$($appName.ToLower())" `
     -TargetStage "stage-$($appName.ToLower())" `
-    -TargetProd "prod-$($appName.ToLower())"
+    -TargetProd "prod-$($appName.ToLower())" `
+    -FirebaseKey $firebaseToken `
+    -NugetPackageId $nugetPkgId `
+    -GitVersioning $gitVersion

@@ -7,7 +7,6 @@ $developDeployTarget = 'DEVELOP'
 $stagingDeployTarget = 'STAGING'
 $localhostDeployTarget = 'LOCALHOST'
 
-
 #context
 $isRunningOnBuildServer = IIf $env:APPVEYOR $true $false
 $buildDir = IIf $env:APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER (Get-Location).Path
@@ -41,10 +40,10 @@ $distDir = Join-Path -Path $spaDir -ChildPath 'dist'
 #environment
 $envDeployTarget = $localhostDeployTarget
 
-if ($isRunningOnBuildServer -eq $true) {
-    if ($isPullRequest -eq $false -and $prBranchDestination -eq 'master') {
+if ($isRunningOnBuildServer -eq $true -and $isPullRequest -eq $false) {
+    if ($prBranchDestination -eq 'master') {
         $envDeployTarget = $prodDeployTarget
-    } elseif ($isPullRequest -eq $false -and $prBranchDestination -eq 'develop') {
+    } elseif ($prBranchDestination -eq 'develop') {
         $envDeployTarget = $developDeployTarget
     } elseif ($prBranchDestination -match '^release/'-or $prBranchDestination -match '^hotfix/') {
         $envDeployTarget = $stagingDeployTarget
