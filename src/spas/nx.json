@@ -19,18 +19,6 @@
     },
     "jwadmin": {
       "tags": []
-    },
-    "services-auth-service": {
-      "tags": ["auth"]
-    },
-    "ui-auth": {
-      "tags": ["ui"]
-    },
-    "feature-auth": {
-      "tags": ["feature"]
-    },
-    "module-wrappers-firebase": {
-      "tags": ["module-wrapper"]
     }
   }
 }
