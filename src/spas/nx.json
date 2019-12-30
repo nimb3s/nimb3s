@@ -19,6 +19,21 @@
     },
     "jwadmin": {
       "tags": []
+    },
+    "shared-ui-layout": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-util-extensions": {
+      "tags": ["scope:shared", "type:util"]
+    },
+    "member-management-api": {
+      "tags": ["scope:member-management", "type:api"]
+    },
+    "member-management-domain": {
+      "tags": ["scope:member-management", "type:domain"]
+    },
+    "member-management-feature": {
+      "tags": ["scope:member-management", "type:feature"]
     }
   }
 }
