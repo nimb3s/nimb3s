@@ -4,7 +4,9 @@ import { SharedUiLayoutModule } from './shared-ui-layout.module';
 describe('SharedUiLayoutModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedUiLayoutModule]
+      imports: [
+        SharedUiLayoutModule
+      ]
     }).compileComponents();
   }));
 
