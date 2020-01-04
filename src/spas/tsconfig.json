@@ -23,6 +23,19 @@
       "@nimb3s/feature/auth": ["libs/feature/auth/src/index.ts"],
       "@nimb3s/module-wrappers/firebase": [
         "libs/module-wrappers/firebase/src/index.ts"
+      ],
+      "@nimb3s/shared/ui/layout": ["libs/shared/ui/layout/src/index.ts"],
+      "@nimb3s/shared/util/extensions": [
+        "libs/shared/util/extensions/src/index.ts"
+      ],
+      "@nimb3s/member-management/api": [
+        "libs/member-management/api/src/index.ts"
+      ],
+      "@nimb3s/member-management/domain": [
+        "libs/member-management/domain/src/index.ts"
+      ],
+      "@nimb3s/member-management/feature": [
+        "libs/member-management/feature/src/index.ts"
       ]
     }
   },

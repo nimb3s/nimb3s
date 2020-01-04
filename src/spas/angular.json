@@ -359,6 +359,149 @@
           }
         }
       }
+    },
+    "shared-ui-layout": {
+      "projectType": "library",
+      "root": "libs/shared/ui/layout",
+      "sourceRoot": "libs/shared/ui/layout/src",
+      "prefix": "ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/layout/tsconfig.lib.json",
+              "libs/shared/ui/layout/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/layout/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui/layout/jest.config.js",
+            "tsConfig": "libs/shared/ui/layout/tsconfig.spec.json",
+            "setupFile": "libs/shared/ui/layout/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "shared-util-extensions": {
+      "root": "libs/shared/util/extensions",
+      "sourceRoot": "libs/shared/util/extensions/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util/extensions/tsconfig.lib.json",
+              "libs/shared/util/extensions/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/util/extensions/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/util/extensions/jest.config.js",
+            "tsConfig": "libs/shared/util/extensions/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "member-management-api": {
+      "root": "libs/member-management/api",
+      "sourceRoot": "libs/member-management/api/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/member-management/api/tsconfig.lib.json",
+              "libs/member-management/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/member-management/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/member-management/api/jest.config.js",
+            "tsConfig": "libs/member-management/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "member-management-domain": {
+      "root": "libs/member-management/domain",
+      "sourceRoot": "libs/member-management/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/member-management/domain/tsconfig.lib.json",
+              "libs/member-management/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/member-management/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/member-management/domain/jest.config.js",
+            "tsConfig": "libs/member-management/domain/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "member-management-feature": {
+      "projectType": "library",
+      "root": "libs/member-management/feature",
+      "sourceRoot": "libs/member-management/feature/src",
+      "prefix": "jwadmin",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/member-management/feature/tsconfig.lib.json",
+              "libs/member-management/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/member-management/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/member-management/feature/jest.config.js",
+            "tsConfig": "libs/member-management/feature/tsconfig.spec.json",
+            "setupFile": "libs/member-management/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
