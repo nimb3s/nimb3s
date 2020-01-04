@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ui-toolbar',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  @HostBinding('class.no-box-shadow')
+  isNavigationEnabled: boolean;
 
-  ngOnInit() {
+  @Input()
+  isTopNavigation$: Observable<boolean>;
+
+  @Output() openSidenav = new EventEmitter();
+  @Output() openQuickPanel = new EventEmitter();
+
+  constructor() {
   }
+
+  ngOnInit() { }
 
 }

@@ -87,7 +87,9 @@ try
 			int secondPageNumber = 0;
 			foreach (var sheet in sheets)
 			{
-				sheetCounter++;				
+				sheetCounter++;		
+				
+				//first page
 				if(sheetCounter % 2 == 1)
 				{
 					firstPageNumber = sheetCounter;
@@ -106,7 +108,9 @@ try
 					(excelWorksheet.Cells[2, 1] as Range).Value = (excelWorksheet.Cells[2, 1] as Range).Value.ToString().Replace("{type}", "TERRITORIO DE CASA EN CASA");
 					
 					(excelWorksheet.Cells[4, 1] as Range).Value = "fecha:";
-					
+
+					(excelWorksheet.Cells[49, 1] as Range).Value = (excelWorksheet.Cells[49, 22] as Range).Value.ToString().Replace("{revisedTitle}", "Revisado en");
+					(excelWorksheet.Cells[49, 1] as Range).Value = (excelWorksheet.Cells[49, 22] as Range).Value.ToString().Replace("{dateRevised}", DateTime.Now.ToString("d/M/yyyy"));
 					
 					(excelWorksheet.Cells[6, 1] as Range).Value = sheet.First().streetName;
 					
@@ -134,8 +138,11 @@ try
 						}
 					}
 				}
+				//second page
 				else if(sheetCounter % 2 == 0)
 				{
+					secondPageNumber = sheetCounter;
+					
 					(excelWorksheet.Cells[1, 22] as Range).Value = "Territorio";
 					(excelWorksheet.Cells[1, 26] as Range).Value = territory.Territory;
 					(excelWorksheet.Cells[1, 27] as Range).Value = "Localidad";
@@ -143,13 +150,17 @@ try
 					(excelWorksheet.Cells[1, 34] as Range).Value = "Zip Code";
 					(excelWorksheet.Cells[1, 37] as Range).Value = city.ZipCode;
 					(excelWorksheet.Cells[1, 39] as Range).Value = "Pagina";
-					(excelWorksheet.Cells[1, 41] as Range).Value = firstPageNumber;
+					(excelWorksheet.Cells[1, 41] as Range).Value = secondPageNumber;
 					(excelWorksheet.Cells[1, 42] as Range).Value = "de";
 					(excelWorksheet.Cells[1, 43] as Range).Value = sheets.Count;
 
 					(excelWorksheet.Cells[2, 22] as Range).Value = (excelWorksheet.Cells[2, 1] as Range).Value.ToString().Replace("{type}", "TERRITORIO DE CASA EN CASA");
 
 					(excelWorksheet.Cells[4, 22] as Range).Value = "fecha:";
+					
+					
+					(excelWorksheet.Cells[49, 22] as Range).Value = (excelWorksheet.Cells[49, 22] as Range).Value.ToString().Replace("{revisedTitle}", "Revisado en");
+					(excelWorksheet.Cells[49, 22] as Range).Value = (excelWorksheet.Cells[49, 22] as Range).Value.ToString().Replace("{dateRevised}", DateTime.Now.ToString("d/M/yyyy"));
 
 					(excelWorksheet.Cells[6, 23] as Range).Value = sheet.First().streetName;
 					
@@ -176,8 +187,6 @@ try
 							(excelWorksheet.Cells[i + 6, 28] as Range).Value = sheet[i - 1].status;
 						}
 					}
-					
-					secondPageNumber = sheetCounter;
 				}
 				
 				if (sheetCounter % 2 == 0 || sheetCounter == sheets.Count)
@@ -190,7 +199,7 @@ try
 					{
 						//clear last page
 						(excelWorksheet.Cells[1, 22] as Range).Value = "";
-						(excelWorksheet.Cells[1, 26] as Range).Value ="";
+						(excelWorksheet.Cells[1, 26] as Range).Value = "";
 						(excelWorksheet.Cells[1, 27] as Range).Value = "";
 						(excelWorksheet.Cells[1, 30] as Range).Value = "";
 						(excelWorksheet.Cells[1, 34] as Range).Value = "";
@@ -203,6 +212,8 @@ try
 						(excelWorksheet.Cells[2, 22] as Range).Value = (excelWorksheet.Cells[2, 1] as Range).Value.ToString().Replace("{type}", "");
 
 						(excelWorksheet.Cells[4, 22] as Range).Value = "fecha:";
+
+						(excelWorksheet.Cells[49, 22] as Range).Value = "";
 
 						for (int i = 1; i <= maxAddressCountPerSheet; i++)
 						{
