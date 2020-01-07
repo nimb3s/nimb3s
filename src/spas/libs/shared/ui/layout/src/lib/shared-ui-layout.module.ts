@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ToolbarUserComponent } from './toolbar/toolbar-user/toolbar-user.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     ToolbarModule
   ],
   exports: [
-    ToolbarComponent
+    ToolbarComponent,
+    ToolbarUserComponent
   ]
 })
 export class SharedUiLayoutModule {}
