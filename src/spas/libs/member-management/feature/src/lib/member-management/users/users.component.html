@@ -1,0 +1,8 @@
+<h2>Users</h2>
+<ul>
+  <li *ngFor="let user of users" (click)="onSelect(user)">
+    {{user.fullName}}
+  </li>
+</ul>
+
+<jwadmin-user-detail [user]="selectedUser"></jwadmin-user-detail>
