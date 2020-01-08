@@ -36,7 +36,8 @@
       ],
       "@nimb3s/member-management/feature": [
         "libs/member-management/feature/src/index.ts"
-      ]
+      ],
+      "@nimb3s/shared/ui/actions": ["libs/shared/ui/actions/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

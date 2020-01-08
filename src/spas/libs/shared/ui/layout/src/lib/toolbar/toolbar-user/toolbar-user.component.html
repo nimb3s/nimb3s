@@ -1,4 +1,4 @@
-<div class="toolbar-user">
+<div class="toolbar-user" (uiActionClickedOutside)="onClickedOutside()">
     <!-- toolbar user avatar-->
     <button class="btn" (click)="onDropdownToggled()" [class.open]="isOpened">
         <span>

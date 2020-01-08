@@ -23,6 +23,9 @@
     "shared-ui-layout": {
       "tags": ["scope:shared", "type:ui"]
     },
+    "shared-ui-actions": {
+      "tags": ["scope:shared", "type:ui"]
+    },
     "shared-util-extensions": {
       "tags": ["scope:shared", "type:util"]
     },
@@ -34,6 +37,6 @@
     },
     "member-management-feature": {
       "tags": ["scope:member-management", "type:feature"]
-    }
+    },
   }
 }

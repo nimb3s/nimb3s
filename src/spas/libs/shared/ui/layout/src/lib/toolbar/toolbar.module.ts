@@ -16,7 +16,7 @@ import { ToolbarUserComponent } from './toolbar-user/toolbar-user.component';
     RouterModule
   ],
   exports: [
-    ToolbarComponent,
-    ToolbarUserComponent]
+    ToolbarComponent
+  ]
 })
 export class ToolbarModule { }
