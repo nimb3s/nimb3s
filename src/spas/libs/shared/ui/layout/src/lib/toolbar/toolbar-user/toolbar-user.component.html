@@ -1,12 +1,31 @@
-<!-- user toolbar -->
-    <!-- tool bar dropdown toggle -->
-
+<div class="toolbar-user">
     <!-- toolbar user avatar-->
+    <button class="btn" (click)="onDropdownToggled()" [class.open]="isOpened">
+        <span>
+            <img class="avatar" src="https://avatars2.githubusercontent.com/u/2670493?s=400&u=04bac69d466e0717115e92d97938cab09d85839a&v=4" />
+            <span class="name">Kain Tabarez</span> <!-- don't show on small devices -->
+            <!-- down arrow icon --> <!-- don't show on small devices -->
+        </span>
+    </button>
+    <!-- /toolbar user avatar-->
 
     <!-- toolbar user dropdown -->
-        <!-- profile -->
-        <!-- settings -->
-        <!-- help -->
-        <!-- logout -->
+    <ul>
+        
+    </ul>
+    <div class="dropdown" [class.open]="isOpened">
+        <div class="content">
+            <ul>
+                <li>profile</li>
+                <li>settings</li>
+                <li>help</li>
+                <li>logout</li>
+            </ul>
+        </div>
+    </div>
+    <!-- profile -->
+    <!-- settings -->
+    <!-- help -->
+    <!-- logout -->
     <!-- toolbar user dropdown -->
-<!-- /user toolbar -->
+</div>

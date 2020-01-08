@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarUserComponent implements OnInit {
 
+  isOpened: boolean;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onDropdownToggled(){
+    this.isOpened = !this.isOpened;
+  }
+
+  onClickedOutside(){
+    this.isOpened = false;
   }
 
 }
