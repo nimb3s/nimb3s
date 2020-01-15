@@ -10,7 +10,6 @@ import { SharedUiActionsModule } from '@nimb3s/shared/ui/actions';
   imports: [
     CommonModule,
     ToolbarModule,
-    SharedUiActionsModule
   ],
   exports: [
     ToolbarComponent

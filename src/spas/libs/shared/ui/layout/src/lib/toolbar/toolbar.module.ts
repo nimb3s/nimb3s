@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { ToolbarUserComponent } from './toolbar-user/toolbar-user.component';
-
-
+import { SharedUiActionsModule } from '@nimb3s/shared/ui/actions';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,8 @@ import { ToolbarUserComponent } from './toolbar-user/toolbar-user.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedUiActionsModule
   ],
   exports: [
     ToolbarComponent

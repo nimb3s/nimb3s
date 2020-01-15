@@ -5,7 +5,9 @@ import { Directive, ElementRef, Output, HostListener, EventEmitter } from '@angu
 })
 export class ClickedOutsideDirective {
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {
+    console.log(elementRef);
+   }
 
   @Output()
   public uiActionClickedOutside = new EventEmitter<MouseEvent>();
@@ -20,6 +22,7 @@ export class ClickedOutsideDirective {
 
     if (!clickedInside) {
       this.uiActionClickedOutside.emit(event);
+      console.log('clicked outside');
     }
   }
 }
