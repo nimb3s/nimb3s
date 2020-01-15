@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { ToolbarUserComponent } from './toolbar-user/toolbar-user.component';
 import { SharedUiActionsModule } from '@nimb3s/shared/ui/actions';
+import { ToolbarNotificationsComponent } from '../toolbar/toolbar-notifications/toolbar-notifications.component';
 
 @NgModule({
   declarations: [
     ToolbarComponent,
-    ToolbarUserComponent
+    ToolbarUserComponent,
+    ToolbarNotificationsComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { SharedUiActionsModule } from '@nimb3s/shared/ui/actions';
     SharedUiActionsModule
   ],
   exports: [
-    ToolbarComponent
+    ToolbarComponent,
+    ToolbarNotificationsComponent
   ]
 })
 export class ToolbarModule { }
