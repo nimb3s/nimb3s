@@ -43,6 +43,9 @@
     },
     "layout-domain": {
       "tags": ["scope:layout", "type:domain"]
+    },
+    "layout-feature": {
+      "tags": []
     }
   }
 }
