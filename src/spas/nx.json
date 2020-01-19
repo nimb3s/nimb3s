@@ -45,7 +45,7 @@
       "tags": ["scope:layout", "type:domain"]
     },
     "layout-feature": {
-      "tags": []
+      "tags": ["scope:layout", "type:feature"]
     }
   }
 }
