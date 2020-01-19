@@ -38,5 +38,8 @@
     "member-management-feature": {
       "tags": ["scope:member-management", "type:feature"]
     },
+    "layout-api": {
+      "tags": ["scope:layout", "type:api"]
+    }
   }
 }
