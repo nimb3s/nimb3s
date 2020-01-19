@@ -9,11 +9,19 @@ export class ToolbarNotificationsComponent implements OnInit {
 
   @Input()
   notifications: any[]; //use an interface with a read prop instead of using any
+
   isOpened: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    
+  }
+
+  dimiss(notification, e: Event) {
+    e.stopPropagation();
+
+    this.notifications.splice(this.notifications.indexOf(notification))
   }
 
   onClickedOutside() {
@@ -24,7 +32,11 @@ export class ToolbarNotificationsComponent implements OnInit {
     this.isOpened = !this.isOpened;
   }
 
-  allHaveBeenRead() {
+  read(notification) {
+    notification.read = true;
+  }
+
+  allRead() {
     this.notifications.forEach(i => i.read = true)
   }
 
