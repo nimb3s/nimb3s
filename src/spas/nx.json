@@ -40,6 +40,9 @@
     },
     "layout-api": {
       "tags": ["scope:layout", "type:api"]
+    },
+    "layout-domain": {
+      "tags": ["scope:layout", "type:domain"]
     }
   }
 }
