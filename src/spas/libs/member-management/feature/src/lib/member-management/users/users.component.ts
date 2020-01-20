@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { User } from '../../../../../domain/src/lib/models/user-profile';
-import { UserService } from '../../../../../domain/src/lib/user.service';
+import { UserMockService } from '../../../../../domain/src/lib/user.mock.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
   users: Observable<User[]>;
   selectedUser: User;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserMockService) { }
 
   ngOnInit() {
     this.getUsers();

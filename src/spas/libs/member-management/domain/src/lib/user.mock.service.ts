@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 
-export class UserService {
+export class UserMockService {
 
   constructor() { }
 

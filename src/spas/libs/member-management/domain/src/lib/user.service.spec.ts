@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserService } from './user.service';
+import { UserMockService } from './user.mock.service';
 
-describe('UserService', () => {
+describe('UserMockService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: UserService = TestBed.get(UserService);
+    const service: UserMockService = TestBed.get(UserMockService);
     expect(service).toBeTruthy();
   });
 });

@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": ["node", "jest"]
   },
-  "include": ["**/*.ts", "../domain/src/lib/mocks/mock-users.ts", "../domain/src/lib/models/user-profile.ts", "../domain/src/lib/user.service.ts", "../domain/src/lib/user.service.spec.ts"]
+  "include": ["**/*.ts", "../domain/src/lib/mocks/mock-users.ts", "../domain/src/lib/models/user-profile.ts", "../domain/src/lib/user.mock.service.ts", "../domain/src/lib/user.service.spec.ts"]
 }
