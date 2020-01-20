@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user-profile';
-import { UserService } from '../user.service';
+
+import { User } from '../../../../../domain/src/lib/models/user-profile';
+import { UserService } from '../../../../../domain/src/lib/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'jwadmin-users',
@@ -9,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class UsersComponent implements OnInit {
 
-  users: User[];
+  users: Observable<User[]>;
   selectedUser: User;
 
   constructor(private userService: UserService) { }
@@ -24,7 +26,7 @@ export class UsersComponent implements OnInit {
 
   getUsers(): void {
     this.userService.getUsers()
-        .subscribe(users => this.users = users);
+        this.users = this.userService.getUsers();
   }
 
 }

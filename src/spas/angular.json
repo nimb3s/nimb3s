@@ -473,7 +473,7 @@
       "projectType": "library",
       "root": "libs/member-management/feature",
       "sourceRoot": "libs/member-management/feature/src",
-      "prefix": "jwadmin",
+      "prefix": "member-management",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

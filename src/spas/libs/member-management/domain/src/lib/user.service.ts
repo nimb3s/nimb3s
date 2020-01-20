@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { User } from './user-profile';
-import { USERS } from './mock-users';
+import { User } from './models/user-profile';
+import { USERS } from './mocks/mock-users';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   constructor() { }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './user-profile'
+
+import { User } from '../../../../domain/src/lib/models/user-profile'
 
 @Component({
-  selector: 'jwadmin-member-management',
+  selector: 'member-management',
   templateUrl: './member-management.component.html',
   styleUrls: ['./member-management.component.scss']
 })

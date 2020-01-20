@@ -4,14 +4,12 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { MemberManagementFeatureModule } from '@nimb3s/member-management/feature'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    MemberManagementFeatureModule
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

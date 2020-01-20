@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../user-profile';
+import { User } from '../../../../../domain/src/lib/models/user-profile';
 
 @Component({
   selector: 'jwadmin-user-detail',
@@ -16,3 +16,4 @@ export class UserDetailComponent implements OnInit {
   }
 
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
