@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../../../../../domain/src/lib/models/user-profile';
+import { UserProfile } from '../../../../../domain/src/lib/models/user-profile';
 
 @Component({
-  selector: 'jwadmin-user-detail',
+  selector: 'member-management-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
 
-  @Input() user: User;
+  @Input() user: UserProfile;
 
   constructor() { }
 
@@ -16,4 +16,3 @@ export class UserDetailComponent implements OnInit {
   }
 
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

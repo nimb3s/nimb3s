@@ -1,6 +1,6 @@
-import { User } from "../models/user-profile";
+import { UserProfile } from "../models/user-profile";
 
-export const USERS: User[] = [
+export const USERS: UserProfile[] = [
   {
     fullName: 'Alex Aveldanez',
     emailAddress: 'alexsaveldanez@gmail.com',
