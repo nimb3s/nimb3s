@@ -588,7 +588,7 @@
       "projectType": "library",
       "root": "libs/layout/feature",
       "sourceRoot": "libs/layout/feature/src",
-      "prefix": "layout",
+      "prefix": "feature-layout",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
