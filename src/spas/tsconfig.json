@@ -16,14 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nimb3s/services/auth-service": [
-        "libs/services/auth-service/src/index.ts"
-      ],
-      "@nimb3s/ui/auth": ["libs/ui/auth/src/index.ts"],
-      "@nimb3s/feature/auth": ["libs/feature/auth/src/index.ts"],
-      "@nimb3s/module-wrappers/firebase": [
-        "libs/module-wrappers/firebase/src/index.ts"
-      ],
       "@nimb3s/shared/ui/layout": ["libs/shared/ui/layout/src/index.ts"],
       "@nimb3s/shared/util/extensions": [
         "libs/shared/util/extensions/src/index.ts"
