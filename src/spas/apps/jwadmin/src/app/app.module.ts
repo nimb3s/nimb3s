@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire';
 
 import { AppComponent } from './app.component';
 import { SharedUiLayoutModule } from '@nimb3s/shared/ui/layout';
+import { LayoutFeatureModule } from '@nimb3s/layout/feature';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -11,7 +12,8 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'dev-jwadmin'),
-    SharedUiLayoutModule
+    SharedUiLayoutModule,
+    LayoutFeatureModule
   ],
   providers: [],
   bootstrap: [AppComponent]

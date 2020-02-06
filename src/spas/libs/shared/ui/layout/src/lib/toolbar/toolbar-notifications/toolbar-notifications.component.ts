@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ToolbarNotificationsComponent implements OnInit {
 
   @Input()
-  notifications: any[]; //use an interface with a read prop instead of using any
+  notifications: any[] = []; //use an interface with a read prop instead of using any
 
   isOpened: boolean;
 
