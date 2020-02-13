@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../../../../domain/src/lib/models/user-profile'
+import { UserProfile } from '@nimb3s/member-management/domain';
 
 @Component({
   selector: 'member-management',

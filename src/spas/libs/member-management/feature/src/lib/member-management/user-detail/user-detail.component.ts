@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserProfile } from '../../../../../domain/src/lib/models/user-profile';
-
+import { UserProfile } from '@nimb3s/member-management/domain';
 @Component({
   selector: 'member-management-user-detail',
   templateUrl: './user-detail.component.html',

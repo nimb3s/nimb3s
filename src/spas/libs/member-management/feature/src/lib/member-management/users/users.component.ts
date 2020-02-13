@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserProfile } from '../../../../../domain/src/lib/models/user-profile';
-import { MemberManagementMockService } from '../../../../../domain/src/lib/member-management.service.mock';
+import { UserProfile } from '@nimb3s/member-management/domain';
+import { MemberManagementMockService } from '@nimb3s/member-management/domain';
 import { Observable } from 'rxjs';
 
 @Component({
