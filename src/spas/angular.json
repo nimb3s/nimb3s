@@ -21,10 +21,7 @@
             "polyfills": "apps/nimb3s/src/polyfills.ts",
             "tsConfig": "apps/nimb3s/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/nimb3s/src/favicon.ico",
-              "apps/nimb3s/src/assets"
-            ],
+            "assets": ["apps/nimb3s/src/favicon.ico", "apps/nimb3s/src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "apps/nimb3s/src/styles.scss"
@@ -145,10 +142,7 @@
               "apps/nimb3s/tsconfig.app.json",
               "apps/nimb3s/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/nimb3s/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/nimb3s/**"]
           }
         },
         "test": {
@@ -182,13 +176,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/nimb3s-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/nimb3s-e2e/**"
-            ]
+            "tsConfig": ["apps/nimb3s-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/nimb3s-e2e/**"]
           }
         }
       }
@@ -217,9 +206,7 @@
               "apps/jwadmin/src/favicon.ico",
               "apps/jwadmin/src/assets"
             ],
-            "styles": [
-              "apps/jwadmin/src/styles.scss"
-            ],
+            "styles": ["apps/jwadmin/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -336,10 +323,7 @@
               "apps/jwadmin/tsconfig.app.json",
               "apps/jwadmin/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/jwadmin/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/jwadmin/**"]
           }
         },
         "test": {
@@ -373,13 +357,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/jwadmin-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/jwadmin-e2e/**"
-            ]
+            "tsConfig": ["apps/jwadmin-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/jwadmin-e2e/**"]
           }
         }
       }
@@ -397,10 +376,7 @@
               "libs/shared/ui/layout/tsconfig.lib.json",
               "libs/shared/ui/layout/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/ui/layout/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/layout/**"]
           }
         },
         "test": {
@@ -431,10 +407,7 @@
               "libs/shared/util/extensions/tsconfig.lib.json",
               "libs/shared/util/extensions/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/util/extensions/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/util/extensions/**"]
           }
         },
         "test": {
@@ -459,10 +432,7 @@
               "libs/member-management/api/tsconfig.lib.json",
               "libs/member-management/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/member-management/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/member-management/api/**"]
           }
         },
         "test": {
@@ -549,10 +519,7 @@
               "libs/shared/ui/actions/tsconfig.lib.json",
               "libs/shared/ui/actions/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/ui/actions/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/actions/**"]
           }
         },
         "test": {
@@ -583,10 +550,7 @@
               "libs/layout/api/tsconfig.lib.json",
               "libs/layout/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/layout/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/layout/api/**"]
           }
         },
         "test": {
@@ -611,10 +575,7 @@
               "libs/layout/domain/tsconfig.lib.json",
               "libs/layout/domain/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/layout/domain/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/layout/domain/**"]
           }
         },
         "test": {
@@ -639,10 +600,7 @@
               "libs/layout/feature/tsconfig.lib.json",
               "libs/layout/feature/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/layout/feature/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/layout/feature/**"]
           }
         },
         "test": {
@@ -651,6 +609,37 @@
             "jestConfig": "libs/layout/feature/jest.config.js",
             "tsConfig": "libs/layout/feature/tsconfig.spec.json",
             "setupFile": "libs/layout/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "shared-ui-material": {
+      "projectType": "library",
+      "root": "libs/shared/ui/material",
+      "sourceRoot": "libs/shared/ui/material/src",
+      "prefix": "nimb3s",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/material/tsconfig.lib.json",
+              "libs/shared/ui/material/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/material/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui/material/jest.config.js",
+            "tsConfig": "libs/shared/ui/material/tsconfig.spec.json",
+            "setupFile": "libs/shared/ui/material/src/test-setup.ts"
           }
         }
       },

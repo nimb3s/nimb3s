@@ -32,7 +32,8 @@
       "@nimb3s/shared/ui/actions": ["libs/shared/ui/actions/src/index.ts"],
       "@nimb3s/layout/api": ["libs/layout/api/src/index.ts"],
       "@nimb3s/layout/domain": ["libs/layout/domain/src/index.ts"],
-      "@nimb3s/layout/feature": ["libs/layout/feature/src/index.ts"]
+      "@nimb3s/layout/feature": ["libs/layout/feature/src/index.ts"],
+      "@nimb3s/shared/ui/material": ["libs/shared/ui/material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

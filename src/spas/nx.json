@@ -46,6 +46,9 @@
     },
     "layout-feature": {
       "tags": ["scope:layout", "type:feature"]
+    },
+    "shared-ui-material": {
+      "tags": ["scope:shared", "type:ui"]
     }
   }
 }
