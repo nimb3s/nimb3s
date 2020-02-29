@@ -1,32 +1,37 @@
-<div (uiActionClickedOutside)="onClickedOutside()">
+<div class="toolbar-user" (uiActionClickedOutside)="onClickedOutside()" fxFlex="grow">
     <!-- toolbar user avatar-->
-    <button (click)="onDropdownToggled()" [class.open]="isOpened">
-        <span>
+    <button class="button" mat-button (click)="onDropdownToggled()" [class.open]="isOpen" fxFlex="grow">
+        <span fxLayout="row" fxLayoutAlign="start center">
             <img class="avatar" src="https://avatars2.githubusercontent.com/u/2670493?s=400&u=04bac69d466e0717115e92d97938cab09d85839a&v=4" />
-            <span class="name">Kain Tabarez</span> <!-- don't show on small devices -->
-            <!-- down arrow icon --> <!-- don't show on small devices -->
+            <span class="name" fxHide fxShow.gt-sm>Kain Tabarez</span>
+            <mat-icon class="icon" fxHide fxShow.gt-sm>keyboard_arrow_down</mat-icon>
         </span>
     </button>
     <!-- /toolbar user avatar-->
 
     <!-- toolbar user dropdown -->
-    <ul>
-        
-    </ul>
-    <div class="dropdown" [class.open]="isOpened">
+    <div class="dropdown" [class.open]="isOpen">
         <div class="content">
-            <ul>
-                <li>profile</li>
-                <li>settings</li>
-                <li>help</li>
-                <li>logout</li>
-                <li>{{isOpened}}</li>
-            </ul>
+          <div class="list">
+            <div class="list-item" matRipple>
+              <mat-icon class="list-item-icon">account_circle</mat-icon>
+              <span>Profile</span>
+            </div>
+            <div class="list-item" matRipple>
+              <mat-icon class="list-item-icon">settings</mat-icon>
+              <span>Settings</span>
+            </div>
+            <div class="list-item" matRipple>
+              <mat-icon class="list-item-icon">help</mat-icon>
+              <span>Help</span>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="list-item" matRipple [routerLink]="['/login']">
+              <mat-icon class="list-item-icon">exit_to_app</mat-icon>
+              <span>Logout</span>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- profile -->
-    <!-- settings -->
-    <!-- help -->
-    <!-- logout -->
+      </div>
     <!-- toolbar user dropdown -->
 </div>
