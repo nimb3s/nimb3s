@@ -15,7 +15,7 @@ export class ToolbarNotificationsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+    this.isOpened = false;
   }
 
   dimiss(notification, e: Event) {

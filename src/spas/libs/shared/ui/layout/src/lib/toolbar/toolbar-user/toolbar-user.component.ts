@@ -12,6 +12,7 @@ export class ToolbarUserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.isOpened = false;
   }
 
   onDropdownToggled(){
