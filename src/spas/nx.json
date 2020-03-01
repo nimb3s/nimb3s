@@ -49,6 +49,9 @@
     },
     "shared-ui-material": {
       "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-styles": {
+      "tags": ["scope:shared", "type:ui"]
     }
   }
 }

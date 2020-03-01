@@ -26,6 +26,11 @@
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "apps/nimb3s/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/shared/ui/styles/src"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -206,7 +211,15 @@
               "apps/jwadmin/src/favicon.ico",
               "apps/jwadmin/src/assets"
             ],
-            "styles": ["apps/jwadmin/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "apps/nimb3s/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/shared/ui/styles/src"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -646,6 +659,31 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "shared-ui-styles": {
+      "root": "libs/shared/ui/styles",
+      "sourceRoot": "libs/shared/ui/styles/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/styles/tsconfig.lib.json",
+              "libs/shared/ui/styles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/styles/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui/styles/jest.config.js",
+            "tsConfig": "libs/shared/ui/styles/tsconfig.spec.json"
+          }
         }
       }
     }

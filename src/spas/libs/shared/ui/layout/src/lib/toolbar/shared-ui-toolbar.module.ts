@@ -18,7 +18,9 @@ import { ToolbarNotificationsComponent } from './toolbar-notifications/toolbar-n
   imports: [
     CommonModule,
     RouterModule,
-    SharedUiActionsModule
+    SharedUiActionsModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   exports: [
     ToolbarComponent,
