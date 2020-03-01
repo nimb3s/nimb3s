@@ -1,18 +1,25 @@
-<div (uiActionClickedOutside)="onClickedOutside()" class="toolbar-notifications">
-  <button (click)="toggleDropdown()" [class.open]="isOpened" class="button" mat-button type="button">
-    <span ng>
-        notifications active icon
-        {{notifications.length === 0}}
-        {{notifications.length}}
-    </span>
+<div (uiActionClickedOutside)="onClickedOutside()" class="toolbar-notifications" fxFlex="grow" fxLayout="row" fxLayoutAlign="start center">
+
+  <!-- button -->
+  <button (click)="toggleDropdown()" [class.open]="isOpened" class="button" fxFlex="grow" mat-button type="button">
+    <mat-icon [matBadgeHidden]="notifications.length === 0" [matBadge]="notifications.length" class="icon">
+      notifications_active
+    </mat-icon>
   </button>
 
-  <div [class.open]="isOpened">
-    <div>
-        header
-    </div>
-    <div>
-        notification items
-    </div>
+  <!-- dropdown -->
+  <div [class.open]="isOpened" class="dropdown">
+    <!-- card -->
+
+    <!-- header -->
+
+    <!-- heading -->
+
+    <!-- subheading -->
+
+    <!-- actions -->
+
+
+    <p>whaaaaaaaaaaaat</p>
   </div>
 </div>

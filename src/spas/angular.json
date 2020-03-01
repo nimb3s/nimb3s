@@ -23,7 +23,6 @@
             "aot": false,
             "assets": ["apps/nimb3s/src/favicon.ico", "apps/nimb3s/src/assets"],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "apps/nimb3s/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -209,11 +208,15 @@
             "aot": false,
             "assets": [
               "apps/jwadmin/src/favicon.ico",
-              "apps/jwadmin/src/assets"
+              "apps/jwadmin/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/shared/ui/styles/src/assets",
+                "output": "./assets/"
+              }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "apps/nimb3s/src/styles.scss"
+              "apps/jwadmin/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

@@ -1,28 +1,30 @@
 <!-- toolbar -->
-<div class="toolbar">
-    <!-- mobile side nav toggle -->
+<div class="toolbar" fxLayout="row" fxLayoutAlign="space-between">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <!-- mobile side nav toggle -->
 
-    <!-- logo -->
+        <!-- logo -->
 
-    <!-- search bar-->
+        <!-- search bar-->
+    </div>
 
-    <!-- full screen toggle -->
+    <div fxLayout="row">
+        <!-- full screen toggle -->
 
-    <!-- search -->
+        <!-- search -->
 
-    <!-- notifications -->
-    <ui-toolbar-notifications></ui-toolbar-notifications>
-    <!-- /notifications -->
+        <!-- notifications -->
+        <ui-toolbar-notifications class="toolbar-button"></ui-toolbar-notifications>
+        <!-- /notifications -->
 
-    <!-- toolbar user profile -->
-    <ui-toolbar-user class="toolbar-btn"></ui-toolbar-user>
-    <!-- /toolbar user profile -->
+        <!-- toolbar user profile -->
+        <ui-toolbar-user class="toolbar-button"></ui-toolbar-user>
+        <!-- /toolbar user profile -->
 
-    <!-- quick panel -->
+        <!-- quick panel -->
+    </div>
 </div>
 <!-- /toolbar -->
-
-<p>hello!!!</p>
 
 <!-- <p>
     is navigation enabled:{{isNavigationEnabled}}
