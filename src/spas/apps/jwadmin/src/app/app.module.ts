@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedUiLayoutModule } from '@nimb3s/shared/ui/layout';
 import { LayoutFeatureModule } from '@nimb3s/layout/feature';
 import { environment } from '../environments/environment';
+import { MemberManagementFeatureModule } from '@nimb3s/member-management/feature'
 
 @NgModule({
   declarations: [AppComponent,],
@@ -13,7 +14,8 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'dev-jwadmin'),
     SharedUiLayoutModule,
-    LayoutFeatureModule
+    LayoutFeatureModule,
+    MemberManagementFeatureModule
   ],
   providers: [],
   bootstrap: [AppComponent]
