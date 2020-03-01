@@ -1,7 +1,7 @@
 {
   "extends": "../../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "jwadmin", "camelCase"],
-    "component-selector": [true, "element", "jwadmin", "kebab-case"]
+    "directive-selector": [true, "attribute", "member-management-feature", "camelCase"],
+    "component-selector": [true, "element", "member-management-feature", "kebab-case"]
   }
 }

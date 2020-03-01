@@ -1,0 +1,30 @@
+<div (uiActionClickedOutside)="onClickedOutside()" class="toolbar-notifications" fxFlex="grow" fxLayout="row" fxLayoutAlign="start center">
+
+  <!-- button -->
+  <button (click)="toggleDropdown()" [class.open]="isOpened" class="button" fxFlex="grow" mat-button type="button">
+    <mat-icon [matBadgeHidden]="notifications.length === 0" [matBadge]="notifications.length" class="icon">
+      notifications_active
+    </mat-icon>
+  </button>
+
+  <!-- dropdown -->
+  <div [class.open]="isOpened" class="dropdown">
+    <!-- card -->
+
+    <!-- header -->
+
+    <!-- heading -->
+
+    <!-- subheading -->
+
+    <!-- actions -->
+
+
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+    </ul>
+  </div>
+</div>

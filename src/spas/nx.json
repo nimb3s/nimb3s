@@ -23,6 +23,9 @@
     "shared-ui-layout": {
       "tags": ["scope:shared", "type:ui"]
     },
+    "shared-ui-actions": {
+      "tags": ["scope:shared", "type:ui"]
+    },
     "shared-util-extensions": {
       "tags": ["scope:shared", "type:util"]
     },
@@ -34,6 +37,21 @@
     },
     "member-management-feature": {
       "tags": ["scope:member-management", "type:feature"]
+    },
+    "layout-api": {
+      "tags": ["scope:layout", "type:api"]
+    },
+    "layout-domain": {
+      "tags": ["scope:layout", "type:domain"]
+    },
+    "layout-feature": {
+      "tags": ["scope:layout", "type:feature"]
+    },
+    "shared-ui-material": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-styles": {
+      "tags": ["scope:shared", "type:ui"]
     }
   }
 }
