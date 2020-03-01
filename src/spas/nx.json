@@ -44,7 +44,7 @@
     "layout-domain": {
       "tags": ["scope:layout", "type:domain"]
     },
-    "feature-layout": {
+    "layout-feature": {
       "tags": ["scope:layout", "type:feature"]
     },
     "shared-ui-material": {

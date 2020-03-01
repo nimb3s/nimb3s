@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutFeatureComponent } from './feature-layout.component';
+import { LayoutFeatureComponent } from './layout-feature.component';
 
 describe('LayoutFeatureComponent', () => {
   let component: LayoutFeatureComponent;

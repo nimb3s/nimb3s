@@ -603,11 +603,11 @@
         }
       }
     },
-    "feature-layout": {
+    "layout-feature": {
       "projectType": "library",
       "root": "libs/layout/feature",
       "sourceRoot": "libs/layout/feature/src",
-      "prefix": "feature-layout",
+      "prefix": "layout-feature",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

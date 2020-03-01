@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'feature-layout',
-  templateUrl: './feature-layout.component.html',
-  styleUrls: ['./feature-layout.component.scss']
+  selector: 'layout-feature',
+  templateUrl: './layout-feature.component.html',
+  styleUrls: ['./layout-feature.component.scss']
 })
 export class LayoutFeatureComponent implements OnInit {
 

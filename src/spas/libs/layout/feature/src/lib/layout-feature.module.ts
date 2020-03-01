@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LayoutFeatureComponent } from './feature-layout.component';
+import { LayoutFeatureComponent } from './layout-feature.component';
 import { SharedUiLayoutModule } from '@nimb3s/shared/ui/layout';
 
 @NgModule({
