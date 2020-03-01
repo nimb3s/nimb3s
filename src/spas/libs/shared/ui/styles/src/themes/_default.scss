@@ -48,8 +48,6 @@ $sidenav-item-dropdown-level2: darken($sidenav-background, 5) !default;
 $sidenav-item-dropdown-level3: darken($sidenav-background, 7.5) !default;
 $sidenav-item-dropdown-level4: darken($sidenav-background, 10) !default;
 
-// @import "../../../app/layout/sidenav/sidenav-item/sidenav-item.component.theme";
-
 // Toolbar
 $toolbar-background: $theme-card !default;
 $toolbar-color: $theme-text !default;
@@ -64,5 +62,4 @@ $toolbar-notification-elevation: $elevation !default;
 $toolbar-search-background: $theme-app-bar !default;
 $toolbar-search-dropdown-elevation: $elevation !default;
 
-// @import "../../../app/layout/toolbar/toolbar.component.theme";;
 @import "../../../layout/src/lib/toolbar/toolbar.component.theme";
