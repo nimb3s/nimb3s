@@ -492,7 +492,7 @@
       "projectType": "library",
       "root": "libs/member-management/feature",
       "sourceRoot": "libs/member-management/feature/src",
-      "prefix": "member-management",
+      "prefix": "feature-member-management",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
