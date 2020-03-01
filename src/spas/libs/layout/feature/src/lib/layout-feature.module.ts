@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ToolbarDefaultComponent } from './toolbar/toolbar-default/toolbar-default.component';
-import { ToolbarModule } from './toolbar/toolbar.module';
+import { LayoutFeatureComponent } from './layout-feature.component';
+import { SharedUiLayoutModule } from '@nimb3s/shared/ui/layout';
 
 @NgModule({
   imports: [
     CommonModule,
-    ToolbarModule
+    SharedUiLayoutModule
   ],
   exports: [
-    ToolbarDefaultComponent
-  ]
+    LayoutFeatureComponent
+  ],
+  declarations: [LayoutFeatureComponent]
 })
 export class LayoutFeatureModule {}

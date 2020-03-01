@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToolbarDefaultComponent } from './toolbar-default.component';
+import { LayoutFeatureComponent } from './layout-feature.component';
 
-describe('ToolbarDefaultComponent', () => {
-  let component: ToolbarDefaultComponent;
-  let fixture: ComponentFixture<ToolbarDefaultComponent>;
+describe('LayoutFeatureComponent', () => {
+  let component: LayoutFeatureComponent;
+  let fixture: ComponentFixture<LayoutFeatureComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarDefaultComponent ]
+      declarations: [ LayoutFeatureComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToolbarDefaultComponent);
+    fixture = TestBed.createComponent(LayoutFeatureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

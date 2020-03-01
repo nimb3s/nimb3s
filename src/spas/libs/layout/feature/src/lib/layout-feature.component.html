@@ -1,0 +1,27 @@
+<!-- loading indicator -->
+<!-- backdrop -->
+<!-- config panel -->
+
+<!-- quick panel -->
+
+<div class="container" fxLayout="column">
+<!-- toolbar position -->
+
+    <!-- left sidenav -->
+
+    <!-- right sidenav: quick panel -->
+
+    <!-- sidenav content -->
+    <ng-container *ngIf="'fixed' === 'fixed'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+</div>
+
+<ng-template #toolbar>
+    <!-- toolbar -->
+    <ui-toolbar fxFlex="none"></ui-toolbar>
+
+    <!-- navigation -->
+</ng-template>
+
+<!-- footer -->

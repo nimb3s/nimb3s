@@ -6,9 +6,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ToolbarUserComponent } from './toolbar/toolbar-user/toolbar-user.component';
 import { ToolbarNotificationsComponent } from './toolbar/toolbar-notifications/toolbar-notifications.component';
 
-
-
-
 @NgModule({
   imports: [
     CommonModule,
