@@ -603,7 +603,7 @@
         }
       }
     },
-    "layout-feature": {
+    "feature-layout": {
       "projectType": "library",
       "root": "libs/layout/feature",
       "sourceRoot": "libs/layout/feature/src",

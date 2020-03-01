@@ -1,1 +1,1 @@
-export * from './lib/layout-feature.module';
+export * from './lib/feature-layout.module';

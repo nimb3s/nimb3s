@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'layout-feature',
+  name: 'feature-layout',
   preset: '../../../jest.config.js',
   coverageDirectory: '../../../coverage/libs/layout/feature',
   snapshotSerializers: [

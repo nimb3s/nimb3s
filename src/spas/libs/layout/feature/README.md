@@ -1,7 +1,7 @@
-# layout-feature
+# feature-layout
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test layout-feature` to execute the unit tests.
+Run `nx test feature-layout` to execute the unit tests.
