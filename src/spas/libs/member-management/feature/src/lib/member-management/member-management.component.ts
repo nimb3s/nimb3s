@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserProfile } from '@nimb3s/member-management/domain';
 
 @Component({
-  selector: 'feature-member-management',
+  selector: 'member-management-feature',
   templateUrl: './member-management.component.html',
   styleUrls: ['./member-management.component.scss']
 })
