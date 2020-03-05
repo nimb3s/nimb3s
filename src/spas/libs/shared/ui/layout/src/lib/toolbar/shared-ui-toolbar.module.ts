@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { SharedUiActionsModule } from '@nimb3s/shared/ui/actions';
 import {MaterialModule} from '@nimb3s/shared/ui/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToolbarComponent } from './toolbar.component';
 import { ToolbarUserComponent } from './toolbar-user/toolbar-user.component';
@@ -20,7 +19,6 @@ import { ScrollbarModule } from '../scrollbar/scrollbar.module';
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     RouterModule,
     SharedUiActionsModule,
     MaterialModule,

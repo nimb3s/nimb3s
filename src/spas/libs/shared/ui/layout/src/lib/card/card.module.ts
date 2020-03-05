@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CardComponent } from './card.component';
 import { CardHeaderComponent } from './card-header/card-header.component';
@@ -22,7 +21,6 @@ import { CardActionsDirective } from './card-actions/card-actions.directive';
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule
   ],
   exports: [
     CardComponent,
