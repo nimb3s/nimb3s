@@ -6,12 +6,13 @@ import { LayoutFeatureModule } from '@nimb3s/layout/feature';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent,],
   imports: [
     BrowserModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'dev-jwadmin'),
     LayoutFeatureModule,
     AppRoutingModule

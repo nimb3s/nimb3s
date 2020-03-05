@@ -1,9 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { LIST_FADE_ANIMATION } from './list.animations';
 
 @Component({
   selector: 'ui-toolbar-notifications',
   templateUrl: './toolbar-notifications.component.html',
-  styleUrls: ['./toolbar-notifications.component.scss']
+  styleUrls: ['./toolbar-notifications.component.scss'],
+  animations: [...LIST_FADE_ANIMATION],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToolbarNotificationsComponent implements OnInit {
 
