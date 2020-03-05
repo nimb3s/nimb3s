@@ -1,0 +1,15 @@
+.ui-card {
+    background: $theme-card;
+    color: $theme-text;
+  
+    @include mat-elevation($elevation);
+  
+    .ui-card-header-subheading {
+      color: $theme-secondary-text;
+    }
+  
+    .ui-card-actions {
+      border-top: 1px solid $theme-divider;
+    }
+  }
+  
