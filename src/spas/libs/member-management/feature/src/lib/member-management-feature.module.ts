@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { UsersComponent } from './member-management/users/users.component';
-import { UserDetailComponent } from './member-management/user-detail/user-detail.component';
+import { MembersComponent } from './member-management/members/members.component';
+import { MemberDetailComponent } from './member-management/members/member-detail/member-detail.component';
 import { MemberManagementComponent } from './member-management/member-management.component';
 
 @NgModule({
@@ -19,6 +19,6 @@ import { MemberManagementComponent } from './member-management/member-management
   exports: [
     MemberManagementComponent
   ],
-  declarations: [MemberManagementComponent, UsersComponent, UserDetailComponent]
+  declarations: [MemberManagementComponent, MembersComponent, MemberDetailComponent]
 })
 export class MemberManagementFeatureModule {}

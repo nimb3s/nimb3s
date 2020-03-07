@@ -1,21 +1,26 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Member, MemberManagementService } from '@nimb3s/member-management/domain';
-import { runInDebugContext } from 'vm';
 
 @Component({
-  selector: 'member-management-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  selector: 'member-management-detail',
+  templateUrl: './member-detail.component.html',
+  styleUrls: ['./member-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit {
+export class MemberDetailComponent implements OnInit {
 
-  @Input() user: Member;
+  @Input() member: Member;
   @Input() index: number;
+  editMode = false;
 
   constructor(private memberManagementService: MemberManagementService) { }
 
   ngOnInit() {
+  }
+
+  onEditMember() {
+    this.editMode = true;
+    this.member = null;
   }
 
   onDeleteMember() {

@@ -1,15 +1,15 @@
 <h2>Members</h2>
 <ul>
-  <li *ngFor="let user of users | async" (click)="onSelect(user)">
-    {{ user.firstName }} {{ user.lastName }}
+  <li *ngFor="let member of members | async" (click)="onSelect(member)">
+    {{ member.firstName }} {{ member.lastName }}
   </li>
 </ul>
 
-<member-management-user-detail [user]="selectedMember" [index]="memberIndex"></member-management-user-detail>
+<member-management-detail [member]="selectedMember" [index]="memberIndex"></member-management-detail>
 <div>
 <hr>
 <div>
-  <button (click)="onNewMember()">New Member</button>
+  <button (click)="onNewMember()">Add New Member</button>
 </div>
 
 </div>

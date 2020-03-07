@@ -11,17 +11,22 @@ import { MemberManagement } from './member-management.interface';
 })
 
 export class MemberManagementService implements MemberManagement {
-  mockUsers: Member[] = MEMBERS;
+  mockMembers: Member[] = MEMBERS;
 
-  getUsers(): Observable<Member[]> {
+
+  getMembers(): Observable<Member[]> {
     return of(MEMBERS);
   }
 
   addMember(user: Member) {
-    this.mockUsers.push(user);
+    this.mockMembers.push(user);
+  }
+
+  updateMember(index: number, newMember: Member) {
+    this.mockMembers[index] = newMember;
   }
 
   deleteMember(index: number) {
-    this.mockUsers.splice(index, 1);
+    this.mockMembers.splice(index, 1);
   }
 }

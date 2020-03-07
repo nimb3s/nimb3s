@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 
 
 @Component({
-  selector: 'member-management-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'member-management',
+  templateUrl: './members.component.html',
+  styleUrls: ['./members.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class MembersComponent implements OnInit {
 
-  users: Observable<Member[]>;
+  members: Observable<Member[]>;
   selectedMember: Member;
   memberIndex: number;
   addingNewMember = false;
@@ -22,16 +22,16 @@ export class UsersComponent implements OnInit {
   constructor(private memberManagementService: MemberManagementService) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getMembers();
   }
 
-  onSelect(user: Member) {
-    this.selectedMember = user;
-    this.memberIndex = this.memberManagementService.mockUsers.indexOf(this.selectedMember);
+  onSelect(member: Member) {
+    this.selectedMember = member;
+    this.memberIndex = this.memberManagementService.mockMembers.indexOf(this.selectedMember);
   }
 
-  getUsers(): void {
-    this.users = this.memberManagementService.getUsers();
+  getMembers(): void {
+    this.members = this.memberManagementService.getMembers();
   }
 
   onNewMember() {
@@ -53,6 +53,7 @@ export class UsersComponent implements OnInit {
 
   onSubmit() {
     this.memberManagementService.addMember(this.memberForm.value);
+    this.addingNewMember = false;
   }
 
 }
