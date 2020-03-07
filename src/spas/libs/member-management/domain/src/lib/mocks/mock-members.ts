@@ -1,10 +1,11 @@
-import { UserProfile } from "../models/user-profile";
+import { Member } from "../models/Member";
 
-export const USERS: UserProfile[] = [
+export const MEMBERS: Member[] = [
   {
-    fullName: 'Alex Aveldanez',
+    firstName: 'Alex',
+    lastName: 'Aveldanez',
     emailAddress: 'alexsaveldanez@gmail.com',
-    personalPhoneNumber: 7708917842,
+    phoneNumber: 7708917842,
     homeAddress: '777 Fake Ave San Diego, CA 92139',
     emergencyContactName: 'Stephanie',
     emergencyContactPhone: 7068448739,
@@ -13,9 +14,10 @@ export const USERS: UserProfile[] = [
     groupNumber: 1
   },
   {
-    fullName: 'Stephanie Aveldanez',
+    firstName: 'Stephanie',
+    lastName: 'Aveldanez',
     emailAddress: 'stepha@gmail.com',
-    personalPhoneNumber: 619888888,
+    phoneNumber: 619888888,
     homeAddress: '12345 Fake Street San Diego, CA 92139',
     emergencyContactName: 'Alex Aveldanez',
     emergencyContactPhone: 7708917842,
@@ -24,9 +26,10 @@ export const USERS: UserProfile[] = [
     groupNumber: 1
   },
   {
-    fullName: 'Michelle Ramirez',
+    firstName: 'Michell',
+    lastName: 'Ramirez',
     emailAddress: 'micheller@gmail.com',
-    personalPhoneNumber: 6191234567,
+    phoneNumber: 6191234567,
     homeAddress: '12345 Street San Diego, CA 92139',
     emergencyContactName: 'Humberto Ramirez',
     emergencyContactPhone: 6191234567,

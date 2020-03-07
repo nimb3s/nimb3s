@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
-import { UserProfile } from '@nimb3s/member-management/domain';
-import { MemberManagementMockService } from '@nimb3s/member-management/domain';
+import { Member } from '@nimb3s/member-management/domain';
+import { MemberManagementService } from '@nimb3s/member-management/domain';
 import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'member-management-users',
@@ -11,22 +13,46 @@ import { Observable } from 'rxjs';
 })
 export class UsersComponent implements OnInit {
 
-  users: Observable<UserProfile[]>;
-  selectedUser: UserProfile;
+  users: Observable<Member[]>;
+  selectedMember: Member;
+  memberIndex: number;
+  addingNewMember = false;
+  memberForm: FormGroup;
 
-  constructor(private userService: MemberManagementMockService) { }
+  constructor(private memberManagementService: MemberManagementService) { }
 
   ngOnInit() {
     this.getUsers();
   }
 
-  onSelect(user: UserProfile) {
-    this.selectedUser = user;
+  onSelect(user: Member) {
+    this.selectedMember = user;
+    this.memberIndex = this.memberManagementService.mockUsers.indexOf(this.selectedMember);
   }
 
   getUsers(): void {
-    this.userService.getUsers()
-        this.users = this.userService.getUsers();
+    this.users = this.memberManagementService.getUsers();
+  }
+
+  onNewMember() {
+    this.addingNewMember = true;
+
+    this.memberForm = new FormGroup({
+      'firstName': new FormControl(),
+      'lastName': new FormControl(),
+      'emailAddress': new FormControl(),
+      'phoneNumber': new FormControl(),
+      'homeAddress': new FormControl(),
+      'emergencyContactName': new FormControl(),
+      'emergencyContactPhone': new FormControl(),
+      'signUpDate': new FormControl(),
+      'congregationName': new FormControl(),
+      'groupNumber': new FormControl()
+    })
+  }
+
+  onSubmit() {
+    this.memberManagementService.addMember(this.memberForm.value);
   }
 
 }

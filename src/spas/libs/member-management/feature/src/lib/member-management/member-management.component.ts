@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserProfile } from '@nimb3s/member-management/domain';
+import { User } from '@nimb3s/member-management/domain';
 
 @Component({
-  selector: 'member-management',
+  selector: 'jwadmin-member-management',
   templateUrl: './member-management.component.html',
   styleUrls: ['./member-management.component.scss']
 })

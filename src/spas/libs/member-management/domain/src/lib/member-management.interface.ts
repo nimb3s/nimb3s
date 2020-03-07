@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { UserProfile } from './models/user-profile';
+import { Member } from './models/Member';
 
 export interface MemberManagement {
-  getUsers(): Observable<UserProfile[]>;
+  getUsers(): Observable<Member[]>;
  }
