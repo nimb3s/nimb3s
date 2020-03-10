@@ -18,8 +18,12 @@ export class MemberManagementService implements MemberManagement {
     return of(MEMBERS);
   }
 
-  addMember(user: Member) {
-    this.mockMembers.push(user);
+  getMember(index: number) {
+    return this.mockMembers[index];
+  }
+
+  addMember(member: Member) {
+    this.mockMembers.push(member);
   }
 
   updateMember(index: number, newMember: Member) {
@@ -29,4 +33,5 @@ export class MemberManagementService implements MemberManagement {
   deleteMember(index: number) {
     this.mockMembers.splice(index, 1);
   }
+
 }

@@ -1,51 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Member } from '@nimb3s/member-management/domain';
 import { MemberManagementService } from '@nimb3s/member-management/domain';
-import { Observable } from 'rxjs';
-
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'member-management',
-  templateUrl: './members.component.html',
-  styleUrls: ['./members.component.scss']
+  selector: 'member-management-members-edit',
+  templateUrl: './members-edit.component.html',
+  styleUrls: ['./members-edit.component.scss']
 })
-export class MembersComponent implements OnInit {
-
-  members: Observable<Member[]>;
-  selectedMember: Member;
-  memberIndex: number;
-  addingNewMember = false;
-  memberForm: FormGroup;
+export class MembersEditComponent implements OnInit {
+  id: number;
   editMode = false;
+  memberForm: FormGroup;
 
-  constructor(private memberManagementService: MemberManagementService) { }
+
+  constructor(
+    private memberManagementService: MemberManagementService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
-    this.getMembers();
-  }
-
-  onSelect(member: Member) {
-    this.selectedMember = member;
-    this.memberIndex = this.memberManagementService.mockMembers.indexOf(this.selectedMember);
-  }
-
-  getMembers(): void {
-    this.members = this.memberManagementService.getMembers();
-  }
-
-  onNewMember() {
-    this.addingNewMember = true;
-    this.initForm();
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.editMode =params['id'] !=null
+        this.initForm();
+      }
+    )
   }
 
   onSubmit() {
-    this.memberManagementService.addMember(this.memberForm.value);
-    this.addingNewMember = false;
+    if(this.editMode) {
+      this.memberManagementService.updateMember(this.id, this.memberForm.value);
+    } else {
+      this.memberManagementService.addMember(this.memberForm.value);
+    }
+    this.onCancel();
   }
 
-  initForm() {
+  onCancel() {
+    this.router.navigate(['../', {relativeTo: this.route}]);
+  }
+
+  private initForm() {
     let firstName = '';
     let lastName = '';
     let emailAddress = '';
@@ -58,7 +57,7 @@ export class MembersComponent implements OnInit {
     let groupNumber: number;
 
     if (this.editMode) {
-      const member = this.memberManagementService.getMember(this.memberIndex);
+      const member = this.memberManagementService.getMember(this.id);
       firstName = member.firstName;
       lastName = member.lastName;
       emailAddress = member.emailAddress;
