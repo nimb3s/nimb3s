@@ -38,4 +38,3 @@ export const MEMBERS: Member[] = [
     groupNumber: 1
   }
 ]
-
