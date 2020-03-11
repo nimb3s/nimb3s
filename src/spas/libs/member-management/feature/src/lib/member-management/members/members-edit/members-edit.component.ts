@@ -41,7 +41,7 @@ export class MembersEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../', {relativeTo: this.route}]);
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   private initForm() {

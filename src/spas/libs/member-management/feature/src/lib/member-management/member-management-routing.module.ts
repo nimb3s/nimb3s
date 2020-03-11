@@ -6,7 +6,7 @@ import { MembersStartComponent } from './members/members-start/members-start.com
 import { MembersEditComponent } from './members/members-edit/members-edit.component';
 import { MembersDetailComponent } from './members/members-detail/members-detail.component';
 
-const appRoutes: Routes = [
+const routes: Routes = [
   { path: '', redirectTo: '/members', pathMatch: 'full' },
   { path: 'members', component: MembersComponent, children: [
     { path: '', component: MembersStartComponent},
@@ -19,9 +19,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class MemberManagementRoutingModule { }

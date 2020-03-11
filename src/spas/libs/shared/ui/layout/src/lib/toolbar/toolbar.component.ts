@@ -14,7 +14,7 @@ export class ToolbarComponent implements OnInit {
   isNavigationEnabled: boolean;
 
   @Input()
-  isTopNavigation$: Observable<boolean>;
+  isTopNavigation: boolean;
 
   @Output() openSidenav = new EventEmitter();
   @Output() openQuickPanel = new EventEmitter();

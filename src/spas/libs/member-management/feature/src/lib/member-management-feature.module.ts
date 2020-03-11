@@ -18,7 +18,7 @@ import { MemberManagementRoutingModule } from './member-management/member-manage
     ReactiveFormsModule,
     MemberManagementRoutingModule
     // RouterModule.forChild([
-    //   {path: '', pathMatch: 'full', component: MembersComponent},
+    //   {path: '', pathMatch: 'full', component: MembersComponent }
     // ])
   ],
   exports: [

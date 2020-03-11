@@ -23,7 +23,7 @@ export class MembersListComponent implements OnInit {
   }
 
   onNewMember() {
-    this.router.navigate(['new', {relativeTo: this.route}]);
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 }

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MemberManagementFeatureModule } from '@nimb3s/member-management/feature';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -15,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'dev-jwadmin'),
     LayoutFeatureModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MemberManagementFeatureModule
   ],
   providers: [],
   bootstrap: [AppComponent]
