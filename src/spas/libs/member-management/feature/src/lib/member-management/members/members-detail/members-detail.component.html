@@ -1,0 +1,16 @@
+
+<div>
+
+<h2>{{ member.firstName | uppercase}} {{ member.lastName | uppercase}}</h2>
+<div><span>Email Address: </span>{{ member.emailAddress}}</div>
+<div><span>Personal Phone Number: </span>{{ member.phoneNumber }}</div>
+<div><span>Home Address: </span>{{ member.homeAddress}}</div>
+<div><span>Emergency Contact Name: </span>{{ member.emergencyContactName}}</div>
+<div><span>Emergency Contact Phone Number: </span>{{ member.emergencyContactPhone}}</div>
+<div><span>Sign Up Date: </span>{{ member.signUpDate}}</div>
+<div><span>Congregation Name: </span>{{ member.congregationName}}</div>
+<div><span>Group Number: </span>{{ member.groupNumber}}</div>
+<div>
+  <button (click)="onEditMember()">Edit Member</button> <button (click)="onDeleteMember()">Delete Member</button>
+</div>
+</div>

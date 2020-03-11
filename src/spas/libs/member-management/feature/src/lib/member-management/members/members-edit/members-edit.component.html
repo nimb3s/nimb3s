@@ -1,0 +1,72 @@
+<form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>First Name: </label>
+    <input
+    type="text"
+    formControlName="firstName">
+  </div>
+  <div>
+    <label>Last Name: </label>
+    <input
+    type="text"
+    formControlName="lastName">
+  </div>
+  <div>
+    <label>Email Address: </label>
+    <input
+    type="text"
+    formControlName="emailAddress">
+  </div>
+  <div>
+    <label>Phone Number: </label>
+    <input
+    type="text"
+    formControlName="phoneNumber">
+  </div>
+  <div>
+    <label>Home Adress: </label>
+    <input
+    type="text"
+    formControlName="homeAddress">
+  </div>
+  <div>
+    <label>Emergency Contact Name: </label>
+    <input
+    type="text"
+    formControlName="emergencyContactName">
+  </div>
+  <div>
+    <label>Emergency Contact Phone Number: </label>
+    <input
+    type="text"
+    formControlName="emergencyContactPhone">
+  </div>
+  <div>
+    <label>Sign Up Date: </label>
+    <input
+    type="text"
+    formControlName="signUpDate">
+  </div>
+  <div>
+    <label>Congregation Name: </label>
+    <input
+    type="text"
+    formControlName="congregationName">
+  </div>
+  <div>
+    <label>GroupNumber: </label>
+    <input
+    type="text"
+    formControlName="groupNumber">
+  </div>
+  <div>
+    <button
+    type="submit"
+    >Save Member</button>
+    <button
+    type="button"
+    (click)="onCancel()"
+    >Cancel
+    </button>
+  </div>
+</form>

@@ -1,0 +1,11 @@
+<div>
+  <member-management-member
+  *ngFor="let member of members; let i = index"
+  [member]="member"
+  [index]="i"
+  ></member-management-member>
+</div>
+<div>
+  <hr>
+  <button (click)="onNewMember()">Add New Member</button>
+</div>

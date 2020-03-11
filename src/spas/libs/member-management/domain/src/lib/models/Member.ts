@@ -1,7 +1,8 @@
-export class UserProfile {
-  fullName: string;
+export interface Member {
+  firstName: string;
+  lastName: string;
   emailAddress: string;
-  personalPhoneNumber: number;
+  phoneNumber: number;
   homeAddress: string;
   emergencyContactName: string;
   emergencyContactPhone: number;

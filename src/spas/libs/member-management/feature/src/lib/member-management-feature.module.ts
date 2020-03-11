@@ -1,21 +1,36 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { MembersComponent } from './member-management/members/members.component';
+import { MembersDetailComponent } from './member-management/members/members-detail/members-detail.component';
 import { MemberManagementComponent } from './member-management/member-management.component';
-import { UsersComponent } from './member-management/users/users.component';
-import { UserDetailComponent } from './member-management/user-detail/user-detail.component';
+import { MembersEditComponent } from './member-management/members/members-edit/members-edit.component';
+import { MembersStartComponent } from './member-management/members/members-start/members-start.component';
+import { MembersListComponent } from './member-management/members/members-list/members-list.component';
+import { MemberComponent } from './member-management/members/members-list/member/member.component';
+import { MemberManagementRoutingModule } from './member-management/member-management-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-
-    RouterModule.forChild([
-      /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
-    ])
+    ReactiveFormsModule,
+    MemberManagementRoutingModule
+    // RouterModule.forChild([
+    //   {path: '', pathMatch: 'full', component: MembersComponent }
+    // ])
   ],
   exports: [
     MemberManagementComponent
   ],
-  declarations: [MemberManagementComponent, UsersComponent, UserDetailComponent]
+  declarations: [
+    MemberManagementComponent,
+    MembersComponent,
+    MembersDetailComponent,
+    MembersEditComponent,
+    MembersStartComponent,
+    MembersListComponent,
+    MemberComponent]
 })
 export class MemberManagementFeatureModule {}
