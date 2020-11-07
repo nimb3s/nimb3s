@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "fuse": {
+        "nimb3s": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -18,7 +18,7 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "aot": true,
-                        "outputPath": "dist/fuse",
+                        "outputPath": "dist/apps/nimb3s",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -169,5 +169,5 @@
             }
         }
     },
-    "defaultProject": "fuse"
+    "defaultProject": "nimb3s"
 }
