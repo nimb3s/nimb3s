@@ -1,0 +1,48 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div class="content">
+        <div  fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+            <fuse-widget  class="widget" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33" *ngFor="let businessAddress of businessAddresses$ | async">
+                <!-- Front -->
+                <div class="fuse-widget-front mat-elevation-z2 mr-lg-32">
+                    <div class="pl-8 pr-8 py-2" fxLayout="row" fxLayoutAlign="space-between center">
+                        <p class="font-size-12">
+                            <b>({{businessAddress.id}})Business Name:</b> {{businessAddress.name}} |
+                            <b>Type:</b> {{businessAddress.type}} |
+                            <b>Address:</b> {{businessAddress.fullAddress}} |
+                            <b>Telephone</b> {{businessAddress.phoneNumber}}
+                        </p>
+                        <button mat-icon-button fuseWidgetToggle aria-label="more">
+                            <mat-icon>info</mat-icon>
+                        </button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="h-32" fxLayout="row" fxLayoutAlign="center center">
+                        <button mat-icon-button aria-label="Example icon button with a heart icon" (click)="remove(businessAddress)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <a [attr.href]="businessAddress.googleMapLink" target="_blank" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+                            <mat-icon>pin_drop</mat-icon>
+                        </a>
+                        <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="setLanguage(businessAddress)">
+                            <mat-icon>favorite</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <!-- / Front -->
+    
+                <!-- Back -->
+                <div class="fuse-widget-back mat-elevation-z2">
+                    <div class="pl-8 pr-8 py-2" fxLayout="row" fxLayoutAlign="space-between center">
+                        <p class="font-size-12">
+                            <b>Tags:</b> {{businessAddress.tags}}
+                        </p>
+                        <button mat-icon-button fuseWidgetToggle aria-label="more">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <!-- / Back -->
+            </fuse-widget>
+        </div> 
+    </div>
+</div>

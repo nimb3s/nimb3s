@@ -2,10 +2,7 @@
   "projects": {
     "default": "dev-nimb3s",
     "stage": "stage-nimb3s",
-    "prod": "prod-nimb3s",
-    "default-jwadmin": "dev-jwadmin",
-    "stage-jwadmin": "stage-jwadmin",
-    "prod-jwadmin": "prod-jwadmin"
+    "prod": "prod-nimb3s"
   },
   "targets": {
     "dev-nimb3s": {
@@ -26,27 +23,6 @@
       "hosting": {
         "nimb3s": [
           "prod-nimb3s"
-        ]
-      }
-    },
-    "dev-jwadmin": {
-      "hosting": {
-        "jwadmin": [
-          "dev-jwadmin"
-        ]
-      }
-    },
-    "stage-jwadmin": {
-      "hosting": {
-        "jwadmin": [
-          "stage-jwadmin"
-        ]
-      }
-    },
-    "prod-jwadmin": {
-      "hosting": {
-        "jwadmin": [
-          "prod-jwadmin"
         ]
       }
     }

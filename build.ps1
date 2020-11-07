@@ -3,7 +3,7 @@ Write-Output "BUILD: STARTED"
 Write-Output "******************************************"
 
 #Set-ExecutionPolicy remoteSigned
-$ErrorActionPreference = "Stop";
+$ErrorActionPreference = "Continue";
 
 Get-ChildItem -Path (Join-Path (Get-Location).Path ".\build\funcs.ps1") -Recurse -File -Force -ErrorAction SilentlyContinue | ForEach-Object {.$_.FullName}
 Get-ChildItem -Path (Join-Path (Get-Location).Path ".\build\vars.ps1") -Recurse -File -Force -ErrorAction SilentlyContinue | ForEach-Object {.$_.FullName}
