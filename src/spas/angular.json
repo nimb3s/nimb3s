@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "nimb3s": {
+        "fuse": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -169,5 +169,5 @@
             }
         }
     },
-    "defaultProject": "nimb3s"
+    "defaultProject": "fuse"
 }

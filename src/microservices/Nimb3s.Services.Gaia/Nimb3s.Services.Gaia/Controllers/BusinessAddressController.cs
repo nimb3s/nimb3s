@@ -21,7 +21,7 @@ namespace Nimb3s.Services.Gaia.Controllers
             this.ctx = ctx;
         }
 
-        [EnableQuery(PageSize = 10)]
+        [EnableQuery(PageSize = 30)]
         [ODataRoute]
         public IQueryable<BusinessAddress> Get()
         {

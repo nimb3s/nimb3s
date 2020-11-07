@@ -95,12 +95,11 @@ export class AddressService implements Resolve<any>
      * @returns {Promise<any>}
      */
     private getNextBusinessAddressPage(page: number): Observable<BusinessAddress[]> {
-      return this._httpClient.get<BusinessAddress[]>(`${environment.gaiaBaseAddress}/odata/BusinessAddress?$skip=${page}&$top=${this._itemLimit}&$filter=IsVerified eq false`)
+      return this._httpClient.get<BusinessAddress[]>(`${environment.gaiaBaseAddress}/odata/BusinessAddress?$skip=${page}&$top=${this._itemLimit}&$filter=IsVerified eq false and ZipCode eq '91950'&orderby=Id`)
       .pipe(
         map(data => {
           let items: any;
           items = data;
-          console.log(items);
           const newlyMapped = items.value.map(i => {
             return new BusinessAddress(
                 i.Id,
@@ -116,8 +115,6 @@ export class AddressService implements Resolve<any>
               );
           });
 
-          console.log(newlyMapped);
-
           return newlyMapped;
         })
       );
@@ -132,15 +129,13 @@ export class AddressService implements Resolve<any>
     private updateBusinessAddress(businessAddress: BusinessAddress): Promise<any>
     {
         return new Promise((resolve, reject) => {
-
-            this._httpClient.patch<BusinessAddress>(`${environment.gaiaBaseAddress}/odata/BusinessAddress/${businessAddress.id}`, {
-              Id: businessAddress.id,
-              Language: businessAddress.language,
-              IsVerified: businessAddress.isVerified
-            })
-                .subscribe(response => {
-                    resolve(response);
-                });
+          this._httpClient.patch<BusinessAddress>(`${environment.gaiaBaseAddress}/odata/BusinessAddress/${businessAddress.id}`, {
+            Id: businessAddress.id,
+            Language: businessAddress.language,
+            IsVerified: businessAddress.isVerified
+          }).subscribe(response => {
+            resolve(response);
+          });
         });
     }
 }
