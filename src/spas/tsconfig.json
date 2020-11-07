@@ -1,41 +1,17 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
+  It is not intended to be used to perform a compilation.
+
+  To learn more about this file see: https://angular.io/config/solution-tsconfig.
+*/
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@nimb3s/shared/ui/layout": ["libs/shared/ui/layout/src/index.ts"],
-      "@nimb3s/shared/util/extensions": [
-        "libs/shared/util/extensions/src/index.ts"
-      ],
-      "@nimb3s/member-management/api": [
-        "libs/member-management/api/src/index.ts"
-      ],
-      "@nimb3s/member-management/domain": [
-        "libs/member-management/domain/src/index.ts"
-      ],
-      "@nimb3s/member-management/feature": [
-        "libs/member-management/feature/src/index.ts"
-      ],
-      "@nimb3s/shared/ui/actions": ["libs/shared/ui/actions/src/index.ts"],
-      "@nimb3s/layout/api": ["libs/layout/api/src/index.ts"],
-      "@nimb3s/layout/domain": ["libs/layout/domain/src/index.ts"],
-      "@nimb3s/layout/feature": ["libs/layout/feature/src/index.ts"],
-      "@nimb3s/shared/ui/material": ["libs/shared/ui/material/src/index.ts"],
-      "@nimb3s/shared/ui/styles": ["libs/shared/ui/styles/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+    "files": [],
+    "references": [
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        }
+    ]
 }

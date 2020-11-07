@@ -394,3 +394,8 @@ yarn-error.log
 # User specific bazel settings
 .bazelrc.user
 *.nuspec
+
+# password files
+*appsettings.json
+*appsettings.*.json
+*aws-lambda-tools-defaults.json

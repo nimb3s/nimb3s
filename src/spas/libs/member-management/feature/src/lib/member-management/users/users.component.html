@@ -1,8 +1,0 @@
-<h2>Users</h2>
-<ul>
-  <li *ngFor="let user of users | async" (click)="onSelect(user)">
-    {{user.fullName}}
-  </li>
-</ul>
-
-<member-management-user-detail [user]="selectedUser"></member-management-user-detail>

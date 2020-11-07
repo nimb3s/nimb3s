@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Services.Gaia", "Nimb3s.Services.Gaia\Nimb3s.Services.Gaia.csproj", "{FBB45F46-A359-4378-A724-D1992871116D}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Nimb3s.Services.Gaia.Database", "Nimb3s.Services.Gaia.Database\Nimb3s.Services.Gaia.Database.sqlproj", "{74BB6D80-B466-4550-B94B-CC10C19A1FAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBB45F46-A359-4378-A724-D1992871116D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB45F46-A359-4378-A724-D1992871116D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB45F46-A359-4378-A724-D1992871116D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB45F46-A359-4378-A724-D1992871116D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BB6D80-B466-4550-B94B-CC10C19A1FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BB6D80-B466-4550-B94B-CC10C19A1FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BB6D80-B466-4550-B94B-CC10C19A1FAF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{74BB6D80-B466-4550-B94B-CC10C19A1FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BB6D80-B466-4550-B94B-CC10C19A1FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BB6D80-B466-4550-B94B-CC10C19A1FAF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FB4F762-ADAC-4520-BC4B-9805D4B06FDE}
+	EndGlobalSection
+EndGlobal
