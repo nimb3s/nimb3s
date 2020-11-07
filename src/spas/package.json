@@ -13,7 +13,6 @@
         "build:install": "npm install --loglevel=error --no-update-notifier",
         "build:firebase": "npm install -g firebase-tools --loglevel=error --no-update-notifier",
         "build:nimb3s": "ng b --project=nimb3s --prod",
-        "build:jwadmin": "ng b --project=jwadmin --prod",
 
         "test": "ng test",
         "lint": "ng lint",
