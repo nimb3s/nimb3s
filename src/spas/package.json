@@ -9,11 +9,9 @@
         "build": "ng build",
         "build:prod": "ng build --prod",
         "build:prod:mem": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
-
         "build:install": "npm install --loglevel=error --no-update-notifier",
         "build:firebase": "npm install -g firebase-tools --loglevel=error --no-update-notifier",
         "build:nimb3s": "ng b --project=fuse --prod",
-
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
@@ -64,10 +62,10 @@
         "zone.js": "0.10.3"
     },
     "devDependencies": {
+        "@angular-devkit/build-angular": "0.1002.0",
         "@angular/cli": "10.0.4",
         "@angular/compiler-cli": "10.0.5",
         "@angular/language-service": "10.0.5",
-        "@angular-devkit/build-angular": "0.1000.4",
         "@types/jasmine": "3.5.2",
         "@types/jasminewd2": "2.0.8",
         "@types/lodash": "4.14.149",
