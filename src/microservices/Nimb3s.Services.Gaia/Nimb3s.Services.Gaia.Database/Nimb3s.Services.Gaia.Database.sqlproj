@@ -65,6 +65,7 @@
   <ItemGroup>
     <Build Include="dbo\Tables\BusinessAddress.sql" />
     <Build Include="Security\Roles\dbr_Gaia.sql" />
+    <Build Include="dbo\Tables\Logs.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />

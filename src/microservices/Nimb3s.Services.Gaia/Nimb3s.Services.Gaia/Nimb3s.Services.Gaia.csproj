@@ -6,6 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Controllers\YellowPageAddressController.cs" />
+    <Compile Remove="Startup.SuperBasicIdentity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Startup.SuperBasicIdentity.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="3.3.110.58" />
