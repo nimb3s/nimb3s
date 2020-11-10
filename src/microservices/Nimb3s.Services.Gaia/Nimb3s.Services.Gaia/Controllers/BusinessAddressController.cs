@@ -21,11 +21,15 @@ namespace Nimb3s.Services.Gaia.Controllers
             this.ctx = ctx;
         }
 
-        [EnableQuery(PageSize = 30)]
+        [EnableQuery]
         [ODataRoute]
         public IQueryable<BusinessAddress> Get()
         {
-            return ctx.BusinessAddress.AsQueryable();
+            return ctx.BusinessAddress
+                    .Where(i => !i.IsVerified)
+                    .Skip(1 * 15)
+                    .Take(15)
+                    .AsQueryable();
         }
 
         [ODataRoute("{id}")]
