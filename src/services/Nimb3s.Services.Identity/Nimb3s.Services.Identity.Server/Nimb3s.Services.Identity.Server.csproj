@@ -17,4 +17,9 @@
     <Folder Include="Core\Repositories\Identity\DynamoDB\" />
     <Folder Include="Core\Repositories\Identity\SqlServer\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="identity.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

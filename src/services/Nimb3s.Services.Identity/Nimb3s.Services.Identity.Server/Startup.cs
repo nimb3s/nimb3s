@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Stores;
@@ -34,16 +38,28 @@ namespace Nimb3s.Services.Identity.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(o => o.AddPolicy("LaxedPolicy", b =>
+            {
+                b.AllowAnyOrigin()
+                 .AllowAnyMethod()
+                 .AllowAnyHeader();
+            }));
 
             // Add S3 to the ASP.NET Core dependency injection framework.
+
+
             services.AddAWSService<Amazon.S3.IAmazonS3>();
+
+            var pemData = Regex.Replace(Regex.Replace(Constants.CERT, @"\s+", string.Empty), @"-+[^-]+-+", string.Empty);
+            var pemBytes = Convert.FromBase64String(pemData);
+
             services.AddIdentityServer()
                 .AddInMemoryClients(new InMemoryClients().Get())
                 .AddInMemoryIdentityResources(new InMemoryIdentityResources().Get())
                 .AddInMemoryApiResources(new InMemoryApiResources().Get())
                 .AddInMemoryApiScopes(new InMemoryApiScopes().Get())
                 .AddTestUsers(new InMemoryUsers().Get().ToList())
-                .AddDeveloperSigningCredential();
+                .AddSigningCredential(new X509Certificate2(pemBytes, "password1", X509KeyStorageFlags.Exportable));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -55,11 +71,12 @@ namespace Nimb3s.Services.Identity.Server
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("LaxedPolicy");
 
             app.UseRouting();
             app.UseIdentityServer();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

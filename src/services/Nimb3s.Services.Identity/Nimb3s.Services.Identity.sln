@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Services.Identity.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Services.Identity.Server.Tests", "Nimb3s.Services.Identity.Server.Tests\Nimb3s.Services.Identity.Server.Tests.csproj", "{A742047F-0CC3-4976-84FE-FD9B0C59076B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{3EEF831A-0B73-43DF-AFE0-599B67B00158}"
+	ProjectSection(SolutionItems) = preProject
+		create-cert.ps1 = create-cert.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
